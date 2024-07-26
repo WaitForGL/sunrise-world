@@ -10,6 +10,8 @@ import java.io.IOException;
 
 @Component
 public class SimpleCORSFilter implements Filter{
+
+    //解决跨域
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
