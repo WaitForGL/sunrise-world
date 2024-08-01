@@ -60,6 +60,11 @@
             <groupId>com.september</groupId>
             <artifactId>september-generator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>3.5.5</version>
+        </dependency>
 
     </dependencies>
 
