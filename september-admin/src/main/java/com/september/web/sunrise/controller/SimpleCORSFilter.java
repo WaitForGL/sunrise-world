@@ -1,4 +1,4 @@
-package com.september.web.controller.common;
+package com.september.web.sunrise.controller;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
