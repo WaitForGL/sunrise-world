@@ -7,13 +7,17 @@ import com.september.sunrise.entity.commons.PageValidate;
 import com.september.sunrise.entity.demo.DemoStudent;
 import com.september.sunrise.entity.demo.request.DemoStudentRequest;
 import com.september.sunrise.entity.demo.response.DemoStudentResponse;
-import com.september.web.sunrise.service.IDemoService;
+import com.september.sunrise.until.excel.ExcelUtils;
+import com.september.web.sunrise.service.demo.IDemoService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/manage/demo")
@@ -35,7 +39,7 @@ public class DemoController {
 
     @ApiOperation(value = "测试数据列表新增")
     @PostMapping("/add")
-    public AjaxResult add(@Validated @RequestBody DemoStudentRequest request) {
+    public AjaxResult add(@Validated @RequestBody DemoStudent request) {
         demoService.add(request);
         return AjaxResult.success("新增成功");
     }
@@ -53,4 +57,37 @@ public class DemoController {
         demoService.removeData(request);
         return AjaxResult.success("删除成功");
     }
+
+    /**
+     * 批量导入测试数据
+     * @param file
+     * @return
+     */
+    @PostMapping("/excelDemoStudent")
+    public AjaxResult excelDemoStudent(@RequestPart("file") MultipartFile file) throws Exception{
+        //excel数据解析
+        List<DemoStudent> demoStudents = ExcelUtils.readMultipartFile(file, DemoStudent.class);
+        for(DemoStudent demoStudent : demoStudents){
+            //部分字段新增属性内容 例如
+            demoStudent.setStuName("新增属性");
+            demoService.add(demoStudent);
+
+        }
+        return AjaxResult.success("导入完成");
+    }
+
+    /**
+     * 批量导出测试数据
+     * @param response
+     * @return
+     */
+    @GetMapping("/exportDemoStudent")
+    public void exportDemoStudent(HttpServletResponse response, DemoStudentRequest request){
+        List<DemoStudent> list = demoService.pageList(request);
+        ExcelUtils.export(response,"测试数据表",list,DemoStudent.class);
+
+
+    }
+
+
 }

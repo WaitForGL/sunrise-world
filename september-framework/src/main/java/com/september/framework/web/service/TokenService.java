@@ -14,7 +14,7 @@ import com.september.common.constant.Constants;
 import com.september.common.core.domain.model.LoginUser;
 import com.september.common.core.redis.RedisCache;
 import com.september.common.utils.ServletUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.ip.AddressUtils;
 import com.september.common.utils.ip.IpUtils;
 import com.september.common.utils.uuid.IdUtils;

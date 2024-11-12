@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import com.september.common.core.domain.model.LoginUser;
 import com.september.common.utils.SecurityUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.framework.web.service.TokenService;
 
 /**

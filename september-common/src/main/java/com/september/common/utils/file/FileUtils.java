@@ -15,7 +15,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import com.september.common.config.SeptemberConfig;
 import com.september.common.utils.DateUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.uuid.IdUtils;
 import org.apache.commons.io.FilenameUtils;
 

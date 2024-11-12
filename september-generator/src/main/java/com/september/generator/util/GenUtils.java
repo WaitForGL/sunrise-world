@@ -3,7 +3,7 @@ package com.september.generator.util;
 import java.util.Arrays;
 import org.apache.commons.lang3.RegExUtils;
 import com.september.common.constant.GenConstants;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.generator.config.GenConfig;
 import com.september.generator.domain.GenTable;
 import com.september.generator.domain.GenTableColumn;

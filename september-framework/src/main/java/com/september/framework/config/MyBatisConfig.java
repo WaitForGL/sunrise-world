@@ -22,7 +22,7 @@ import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.util.ClassUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * Mybatis支持*匹配扫描包

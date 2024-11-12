@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.september.common.core.controller.BaseController;
 import com.september.common.core.domain.R;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

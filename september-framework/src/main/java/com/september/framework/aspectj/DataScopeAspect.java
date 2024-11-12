@@ -13,7 +13,7 @@ import com.september.common.core.domain.entity.SysUser;
 import com.september.common.core.domain.model.LoginUser;
 import com.september.common.core.text.Convert;
 import com.september.common.utils.SecurityUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.framework.security.context.PermissionContextHolder;
 
 /**

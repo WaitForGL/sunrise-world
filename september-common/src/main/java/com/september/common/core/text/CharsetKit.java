@@ -2,7 +2,7 @@ package com.september.common.core.text;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * 字符集工具类

@@ -20,7 +20,7 @@ import com.september.common.core.domain.AjaxResult;
 import com.september.common.core.domain.entity.SysDictData;
 import com.september.common.core.page.TableDataInfo;
 import com.september.common.enums.BusinessType;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.poi.ExcelUtil;
 import com.september.system.service.ISysDictDataService;
 import com.september.system.service.ISysDictTypeService;

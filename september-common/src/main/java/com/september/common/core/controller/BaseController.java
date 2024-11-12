@@ -18,7 +18,7 @@ import com.september.common.core.page.TableSupport;
 import com.september.common.utils.DateUtils;
 import com.september.common.utils.PageUtils;
 import com.september.common.utils.SecurityUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.sql.SqlUtil;
 
 /**

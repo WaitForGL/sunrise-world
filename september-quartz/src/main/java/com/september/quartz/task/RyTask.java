@@ -1,7 +1,7 @@
 package com.september.quartz.task;
 
 import org.springframework.stereotype.Component;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * 定时任务调度测试

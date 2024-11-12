@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.september.common.constant.CacheConstants;
 import com.september.common.core.domain.AjaxResult;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.system.domain.SysCache;
 
 /**

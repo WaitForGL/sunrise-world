@@ -13,7 +13,7 @@ import com.september.common.core.domain.entity.SysDictData;
 import com.september.common.core.domain.entity.SysDictType;
 import com.september.common.exception.ServiceException;
 import com.september.common.utils.DictUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.system.mapper.SysDictDataMapper;
 import com.september.system.mapper.SysDictTypeMapper;
 import com.september.system.service.ISysDictTypeService;

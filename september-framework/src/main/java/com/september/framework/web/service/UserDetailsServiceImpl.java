@@ -12,7 +12,7 @@ import com.september.common.core.domain.model.LoginUser;
 import com.september.common.enums.UserStatus;
 import com.september.common.exception.ServiceException;
 import com.september.common.utils.MessageUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.system.service.ISysUserService;
 
 /**

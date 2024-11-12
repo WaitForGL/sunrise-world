@@ -14,7 +14,7 @@ import com.september.common.constant.Constants;
 import com.september.common.constant.ScheduleConstants;
 import com.september.common.exception.job.TaskException;
 import com.september.common.exception.job.TaskException.Code;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.spring.SpringUtils;
 import com.september.quartz.domain.SysJob;
 

@@ -1,7 +1,7 @@
 package com.september.common.exception.base;
 
 import com.september.common.exception.H5Exception;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.Collection;

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.september.common.core.controller.BaseController;
 import com.september.common.core.domain.AjaxResult;
 import com.september.common.core.domain.model.RegisterBody;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.framework.web.service.SysRegisterService;
 import com.september.system.service.ISysConfigService;
 

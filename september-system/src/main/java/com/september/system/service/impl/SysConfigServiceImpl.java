@@ -12,7 +12,7 @@ import com.september.common.core.redis.RedisCache;
 import com.september.common.core.text.Convert;
 import com.september.common.enums.DataSourceType;
 import com.september.common.exception.ServiceException;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.system.domain.SysConfig;
 import com.september.system.mapper.SysConfigMapper;
 import com.september.system.service.ISysConfigService;

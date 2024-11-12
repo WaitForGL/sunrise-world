@@ -7,6 +7,7 @@ import com.september.common.constant.CacheConstants;
 import com.september.common.core.domain.entity.SysDictData;
 import com.september.common.core.redis.RedisCache;
 import com.september.common.utils.spring.SpringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * 字典工具类

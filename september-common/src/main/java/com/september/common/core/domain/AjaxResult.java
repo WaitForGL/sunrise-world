@@ -3,7 +3,7 @@ package com.september.common.core.domain;
 import java.util.HashMap;
 import java.util.Objects;
 import com.september.common.constant.HttpStatus;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * 操作消息提醒

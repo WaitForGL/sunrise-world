@@ -1,7 +1,7 @@
 package com.september.common.exception.base;
 
 import com.september.common.utils.MessageUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * 基础异常

@@ -22,7 +22,7 @@ import com.september.common.core.domain.entity.SysUser;
 import com.september.common.core.domain.model.LoginUser;
 import com.september.common.core.page.TableDataInfo;
 import com.september.common.enums.BusinessType;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.poi.ExcelUtil;
 import com.september.framework.web.service.SysPermissionService;
 import com.september.framework.web.service.TokenService;

@@ -15,7 +15,7 @@ import com.september.common.core.domain.entity.SysUser;
 import com.september.common.core.text.Convert;
 import com.september.common.exception.ServiceException;
 import com.september.common.utils.SecurityUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.spring.SpringUtils;
 import com.september.system.mapper.SysDeptMapper;
 import com.september.system.mapper.SysRoleMapper;

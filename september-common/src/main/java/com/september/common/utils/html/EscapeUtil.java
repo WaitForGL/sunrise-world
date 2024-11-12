@@ -1,6 +1,6 @@
 package com.september.common.utils.html;
 
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * 转义和反转义工具类

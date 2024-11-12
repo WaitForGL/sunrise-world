@@ -25,7 +25,7 @@ import com.september.common.core.domain.entity.SysUser;
 import com.september.common.core.page.TableDataInfo;
 import com.september.common.enums.BusinessType;
 import com.september.common.utils.SecurityUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.poi.ExcelUtil;
 import com.september.system.service.ISysDeptService;
 import com.september.system.service.ISysPostService;

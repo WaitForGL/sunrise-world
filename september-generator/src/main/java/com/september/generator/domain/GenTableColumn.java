@@ -2,7 +2,7 @@ package com.september.generator.domain;
 
 import javax.validation.constraints.NotBlank;
 import com.september.common.core.domain.BaseEntity;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * 代码生成业务字段表 gen_table_column

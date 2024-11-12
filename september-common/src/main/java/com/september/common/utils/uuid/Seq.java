@@ -2,7 +2,7 @@ package com.september.common.utils.uuid;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import com.september.common.utils.DateUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 
 /**
  * @author september 序列生成类

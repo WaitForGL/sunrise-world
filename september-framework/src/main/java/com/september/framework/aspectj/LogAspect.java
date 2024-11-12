@@ -25,7 +25,7 @@ import com.september.common.enums.HttpMethod;
 import com.september.common.filter.PropertyPreExcludeFilter;
 import com.september.common.utils.SecurityUtils;
 import com.september.common.utils.ServletUtils;
-import com.september.common.utils.StringUtils;
+import com.september.sunrise.until.StringUtils;
 import com.september.common.utils.ip.IpUtils;
 import com.september.framework.manager.AsyncManager;
 import com.september.framework.manager.factory.AsyncFactory;
