@@ -28,6 +28,7 @@ public class LoginController {
             return AjaxResult.success("login success",user);
         }else{
             userService.insertUser(username,password);
+            //查出新增的用户id
             User newUser = userService.isExistUser(username,password);
             StpUtil.login(newUser.getId());
             return AjaxResult.success("login success",newUser);
