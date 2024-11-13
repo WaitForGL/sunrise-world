@@ -1,6 +1,6 @@
 package com.september.system.domain.vo;
 
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * 路由显示信息

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import com.september.common.annotation.RateLimiter;
 import com.september.common.enums.LimitType;
 import com.september.common.exception.ServiceException;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.ip.IpUtils;
 
 /**

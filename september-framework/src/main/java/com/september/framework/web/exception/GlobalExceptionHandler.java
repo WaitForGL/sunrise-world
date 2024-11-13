@@ -16,7 +16,7 @@ import com.september.common.core.domain.AjaxResult;
 import com.september.common.core.text.Convert;
 import com.september.common.exception.DemoModeException;
 import com.september.common.exception.ServiceException;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.html.EscapeUtil;
 
 /**

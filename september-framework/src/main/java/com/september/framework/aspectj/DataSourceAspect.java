@@ -12,7 +12,7 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import com.september.common.annotation.DataSource;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.framework.datasource.DynamicDataSourceContextHolder;
 
 /**

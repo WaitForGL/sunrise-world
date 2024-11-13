@@ -1,6 +1,6 @@
 package com.september.common.core.text;
 
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * 字符串格式化

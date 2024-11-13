@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.september.common.constant.Constants;
 import com.september.common.utils.LogUtils;
 import com.september.common.utils.ServletUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.ip.AddressUtils;
 import com.september.common.utils.ip.IpUtils;
 import com.september.common.utils.spring.SpringUtils;

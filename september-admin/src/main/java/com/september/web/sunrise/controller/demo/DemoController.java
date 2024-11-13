@@ -6,8 +6,7 @@ import com.september.common.core.domain.PageResult;
 import com.september.sunrise.entity.commons.PageValidate;
 import com.september.sunrise.entity.demo.DemoStudent;
 import com.september.sunrise.entity.demo.request.DemoStudentRequest;
-import com.september.sunrise.entity.demo.response.DemoStudentResponse;
-import com.september.sunrise.until.excel.ExcelUtils;
+import com.september.sunrise.utils.excel.ExcelUtils;
 import com.september.web.sunrise.service.demo.IDemoService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
@@ -17,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Random;
 
 @RestController
 @RequestMapping("/manage/demo")

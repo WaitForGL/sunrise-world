@@ -1,6 +1,6 @@
 package com.september.system.domain;
 
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * 缓存信息

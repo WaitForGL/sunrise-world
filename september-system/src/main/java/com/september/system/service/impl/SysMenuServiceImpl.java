@@ -17,7 +17,7 @@ import com.september.common.core.domain.entity.SysMenu;
 import com.september.common.core.domain.entity.SysRole;
 import com.september.common.core.domain.entity.SysUser;
 import com.september.common.utils.SecurityUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.system.domain.vo.MetaVo;
 import com.september.system.domain.vo.RouterVo;
 import com.september.system.mapper.SysMenuMapper;

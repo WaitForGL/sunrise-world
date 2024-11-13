@@ -7,7 +7,7 @@ import com.september.common.constant.Constants;
 import com.september.common.core.domain.entity.SysRole;
 import com.september.common.core.domain.model.LoginUser;
 import com.september.common.utils.SecurityUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.framework.security.context.PermissionContextHolder;
 
 /**

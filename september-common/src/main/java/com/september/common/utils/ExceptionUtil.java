@@ -3,7 +3,7 @@ package com.september.common.utils;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 /**

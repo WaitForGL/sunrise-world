@@ -18,7 +18,7 @@ import com.september.common.core.controller.BaseController;
 import com.september.common.core.domain.AjaxResult;
 import com.september.common.core.domain.entity.SysMenu;
 import com.september.common.enums.BusinessType;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.system.service.ISysMenuService;
 
 /**

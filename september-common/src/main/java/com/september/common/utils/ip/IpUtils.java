@@ -4,7 +4,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import javax.servlet.http.HttpServletRequest;
 import com.september.common.utils.ServletUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * 获取IP方法

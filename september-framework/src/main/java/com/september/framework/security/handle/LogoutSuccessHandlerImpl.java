@@ -14,7 +14,7 @@ import com.september.common.core.domain.AjaxResult;
 import com.september.common.core.domain.model.LoginUser;
 import com.september.common.utils.MessageUtils;
 import com.september.common.utils.ServletUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.framework.manager.AsyncManager;
 import com.september.framework.manager.factory.AsyncFactory;
 import com.september.framework.web.service.TokenService;

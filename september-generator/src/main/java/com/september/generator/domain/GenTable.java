@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ArrayUtils;
 import com.september.common.constant.GenConstants;
 import com.september.common.core.domain.BaseEntity;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * 业务表 gen_table

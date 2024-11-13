@@ -1,7 +1,7 @@
 package com.september.common.utils.sql;
 
 import com.september.common.exception.UtilException;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * sql操作工具类

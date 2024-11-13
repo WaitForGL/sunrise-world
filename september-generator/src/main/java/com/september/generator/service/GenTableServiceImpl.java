@@ -27,7 +27,7 @@ import com.september.common.constant.Constants;
 import com.september.common.constant.GenConstants;
 import com.september.common.core.text.CharsetKit;
 import com.september.common.exception.ServiceException;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.generator.domain.GenTable;
 import com.september.generator.domain.GenTableColumn;
 import com.september.generator.mapper.GenTableColumnMapper;

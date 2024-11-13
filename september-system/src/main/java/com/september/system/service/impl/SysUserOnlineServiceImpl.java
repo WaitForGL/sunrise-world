@@ -2,7 +2,7 @@ package com.september.system.service.impl;
 
 import org.springframework.stereotype.Service;
 import com.september.common.core.domain.model.LoginUser;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.system.domain.SysUserOnline;
 import com.september.system.service.ISysUserOnlineService;
 

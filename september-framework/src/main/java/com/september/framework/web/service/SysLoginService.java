@@ -21,7 +21,7 @@ import com.september.common.exception.user.UserNotExistsException;
 import com.september.common.exception.user.UserPasswordNotMatchException;
 import com.september.common.utils.DateUtils;
 import com.september.common.utils.MessageUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.ip.IpUtils;
 import com.september.framework.manager.AsyncManager;
 import com.september.framework.manager.factory.AsyncFactory;

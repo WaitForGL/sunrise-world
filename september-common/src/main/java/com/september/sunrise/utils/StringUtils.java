@@ -1,4 +1,4 @@
-package com.september.sunrise.until;
+package com.september.sunrise.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;

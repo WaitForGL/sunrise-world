@@ -1,6 +1,6 @@
 package com.september.common.xss;
 
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;

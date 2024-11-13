@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.september.common.config.SeptemberConfig;
 import com.september.common.constant.Constants;
 import com.september.common.core.domain.AjaxResult;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.file.FileUploadUtils;
 import com.september.common.utils.file.FileUtils;
 import com.september.framework.config.ServerConfig;

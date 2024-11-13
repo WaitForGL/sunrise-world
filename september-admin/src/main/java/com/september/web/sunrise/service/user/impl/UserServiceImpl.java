@@ -2,7 +2,7 @@ package com.september.web.sunrise.service.user.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.sunrise.entity.user.User;
 import com.september.sunrise.mapper.user.UserMapper;
 import com.september.web.sunrise.service.user.IUserService;

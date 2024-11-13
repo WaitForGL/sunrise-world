@@ -9,7 +9,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.september.common.constant.GenConstants;
 import com.september.common.utils.DateUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.generator.domain.GenTable;
 import com.september.generator.domain.GenTableColumn;
 

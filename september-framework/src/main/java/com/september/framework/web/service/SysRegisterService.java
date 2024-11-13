@@ -12,7 +12,7 @@ import com.september.common.exception.user.CaptchaException;
 import com.september.common.exception.user.CaptchaExpireException;
 import com.september.common.utils.MessageUtils;
 import com.september.common.utils.SecurityUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.framework.manager.AsyncManager;
 import com.september.framework.manager.factory.AsyncFactory;
 import com.september.system.service.ISysConfigService;

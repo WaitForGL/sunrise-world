@@ -2,7 +2,7 @@ package com.september.web.sunrise.service.demo.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.sunrise.entity.demo.DemoStudent;
 import com.september.sunrise.entity.demo.request.DemoStudentRequest;
 import com.september.sunrise.mapper.demo.DemoStudentMapper;

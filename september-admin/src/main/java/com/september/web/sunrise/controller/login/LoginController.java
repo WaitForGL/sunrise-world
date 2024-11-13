@@ -2,7 +2,7 @@ package com.september.web.sunrise.controller.login;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.september.common.core.domain.AjaxResult;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.sunrise.entity.user.User;
 import com.september.web.sunrise.service.user.IUserService;
 import org.springframework.web.bind.annotation.*;

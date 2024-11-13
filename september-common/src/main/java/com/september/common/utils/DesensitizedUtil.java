@@ -1,6 +1,6 @@
 package com.september.common.utils;
 
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * 脱敏工具类

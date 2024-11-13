@@ -80,7 +80,7 @@ import com.september.common.core.text.Convert;
 import com.september.common.exception.UtilException;
 import com.september.common.utils.DateUtils;
 import com.september.common.utils.DictUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.file.FileTypeUtils;
 import com.september.common.utils.file.FileUtils;
 import com.september.common.utils.file.ImageUtils;

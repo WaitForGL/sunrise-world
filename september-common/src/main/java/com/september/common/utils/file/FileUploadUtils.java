@@ -12,7 +12,7 @@ import com.september.common.exception.file.FileNameLengthLimitExceededException;
 import com.september.common.exception.file.FileSizeLimitExceededException;
 import com.september.common.exception.file.InvalidExtensionException;
 import com.september.common.utils.DateUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.uuid.Seq;
 
 /**

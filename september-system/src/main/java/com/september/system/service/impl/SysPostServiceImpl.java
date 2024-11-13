@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.september.common.constant.UserConstants;
 import com.september.common.exception.ServiceException;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.system.domain.SysPost;
 import com.september.system.mapper.SysPostMapper;
 import com.september.system.mapper.SysUserPostMapper;

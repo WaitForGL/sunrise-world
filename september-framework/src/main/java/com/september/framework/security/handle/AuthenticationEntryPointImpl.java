@@ -11,7 +11,7 @@ import com.alibaba.fastjson2.JSON;
 import com.september.common.constant.HttpStatus;
 import com.september.common.core.domain.AjaxResult;
 import com.september.common.utils.ServletUtils;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 
 /**
  * 认证失败处理类 返回未授权

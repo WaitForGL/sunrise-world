@@ -12,7 +12,7 @@ import com.september.common.annotation.RepeatSubmit;
 import com.september.common.constant.CacheConstants;
 import com.september.common.core.redis.RedisCache;
 import com.september.common.filter.RepeatedlyRequestWrapper;
-import com.september.sunrise.until.StringUtils;
+import com.september.sunrise.utils.StringUtils;
 import com.september.common.utils.http.HttpHelper;
 import com.september.framework.interceptor.RepeatSubmitInterceptor;
 
