@@ -1,4 +1,4 @@
-package com.september.domain.user;
+package com.ruoyi.store.domain.user;
 
 import com.ruoyi.common.core.domain.BaseEntity;
 import lombok.Data;
