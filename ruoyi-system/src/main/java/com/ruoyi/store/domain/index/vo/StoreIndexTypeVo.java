@@ -1,13 +1,18 @@
-package com.ruoyi.store.domain.index;
+package com.ruoyi.store.domain.index.vo;
 
 import com.ruoyi.common.core.domain.BaseEntity;
+import com.ruoyi.store.domain.index.StoreIndexType;
 import lombok.Data;
 
-import java.beans.Transient;
 import java.util.List;
 
+
+/**
+ * 首页返回一级二级层级集合 StoreIndexTypeVo
+ *
+ */
 @Data
-public class StoreIndexType{
+public class StoreIndexTypeVo{
 
     private static final long serialVersionUID = 1L;
 
@@ -25,11 +30,15 @@ public class StoreIndexType{
     /**
      * 上级id
      */
-    private Long belongId;
+    private Integer belongId;
 
     /**
      * 标签状态（0:正常 1:删除）
      */
     private Integer status;
 
+    /**
+     * 一级集合下的子集合
+     */
+    private List<StoreIndexType> list;
 }
