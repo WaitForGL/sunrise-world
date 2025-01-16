@@ -33,9 +33,25 @@ public class StoreIndexTypeVo{
     private Integer belongId;
 
     /**
+     * 标签颜色
+     */
+    private String color;
+
+    /**
      * 标签状态（0:正常 1:删除）
      */
     private Integer status;
+
+    /**
+     * 返回给前端
+     */
+    private Boolean isExpand;
+
+    /**
+     * 返回给前端
+     */
+    private Boolean isAllChoosed;
+
 
     /**
      * 一级集合下的子集合

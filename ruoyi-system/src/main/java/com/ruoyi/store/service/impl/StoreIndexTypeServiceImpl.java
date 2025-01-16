@@ -27,6 +27,8 @@ public class StoreIndexTypeServiceImpl implements IStoreIndexTypeService {
         List<StoreIndexTypeVo> sonList = new ArrayList<>();
         for(StoreIndexType typeOne : firstType){
             StoreIndexTypeVo sonType = new StoreIndexTypeVo();
+            sonType.setIsAllChoosed(false);
+            sonType.setIsExpand(false);
             // 复制属性
             try {
                 BeanUtils.copyProperties(typeOne, sonType);

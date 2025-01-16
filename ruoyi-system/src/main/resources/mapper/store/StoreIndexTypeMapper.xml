@@ -9,16 +9,17 @@
 		<result property="typeName"       column="type_name"      />
 		<result property="typeLevel"     column="type_level"    />
 		<result property="belongId"       column="belong_id"      />
+		<result property="color"       column="color"      />
 		<result property="status"       column="status"      />
 	</resultMap>
 
 	<sql id="selectStoreIndexTypeVo">
-        select id, type_name, type_level, belong_id ,status
+        select id, type_name, type_level, belong_id ,color,status
 		from store_index_type
     </sql>
 
 	<select id="listVo" parameterType="StoreIndexType" resultMap="StoreIndexTypeResult">
-		select id, type_name, type_level, belong_id ,status
+		select id, type_name, type_level, belong_id ,color,status
 		from store_index_type
 		where type_level = #{typeLevel}
 		and status = 0
@@ -26,7 +27,7 @@
 	</select>
     
     <select id="list" parameterType="StoreIndexType" resultMap="StoreIndexTypeResult">
-		select id, type_name, type_level, belong_id ,status
+		select id, type_name, type_level, belong_id ,color,status
 		from store_index_type
 		where type_level = #{typeLevel}
 		  and belong_id = #{belongId}

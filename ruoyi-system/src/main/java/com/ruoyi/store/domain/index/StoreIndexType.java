@@ -1,10 +1,6 @@
 package com.ruoyi.store.domain.index;
 
-import com.ruoyi.common.core.domain.BaseEntity;
 import lombok.Data;
-
-import java.beans.Transient;
-import java.util.List;
 
 @Data
 public class StoreIndexType{
@@ -26,6 +22,11 @@ public class StoreIndexType{
      * 上级id
      */
     private Long belongId;
+
+    /**
+     * 标签颜色
+     */
+    private String color;
 
     /**
      * 标签状态（0:正常 1:删除）
