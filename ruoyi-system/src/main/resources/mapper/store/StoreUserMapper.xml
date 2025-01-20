@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.store.mapper.StoreUserMapper">
+
+	<resultMap type="StoreUser" id="StoreUserResult">
+		<id     property="id"         column="id"        />
+		<result property="username"       column="username"      />
+		<result property="phone"     column="phone"    />
+		<result property="userType"     column="user_type"    />
+		<result property="openId"     column="open_id"    />
+		<result property="status"     column="status"    />
+	</resultMap>
+
+	<sql id="selectStoreIndexTypeVo">
+        select id, username, phone,user_type,open_id,status
+		from store_user
+    </sql>
+
+	<select id="selectByOpenid" parameterType="String" resultType="StoreUser">
+		select id, username, phone,user_type,open_id,status
+		from store_user
+		where open_id = #{openId}
+	</select>
+
+
+	<insert id="insertUserOpenId" parameterType="String">
+		insert into store_user(
+		<if test="openId != null">open_id,</if>
+
+		)values(
+		<if test="openId != null">#{openId},</if>
+		)
+	</insert>
+
+
+
+	
+
+
+</mapper> 

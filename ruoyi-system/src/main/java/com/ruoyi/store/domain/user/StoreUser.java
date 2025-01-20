@@ -18,4 +18,19 @@ public class StoreUser extends BaseEntity {
      * 手机号
      */
     private String phone;
+
+    /**
+     * 用户标识（0:合伙人 1:vip 2:普通用户）
+     */
+    private Integer userType;
+
+    /**
+     * 微信唯一标识open_id
+     */
+    private String openId;
+
+    /**
+     * 用户状态（0:正常 1:停用）
+     */
+    private Integer status;
 }
