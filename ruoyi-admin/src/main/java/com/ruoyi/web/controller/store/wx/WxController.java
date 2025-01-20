@@ -6,7 +6,6 @@ import cn.hutool.json.JSONObject;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.store.domain.user.StoreUser;
-import com.ruoyi.store.service.IStoreIndexTypeService;
 import com.ruoyi.store.service.IStoreUserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
