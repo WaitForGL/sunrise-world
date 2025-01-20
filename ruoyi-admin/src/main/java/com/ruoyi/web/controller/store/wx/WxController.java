@@ -21,6 +21,9 @@ public class WxController extends BaseController {
     @Resource
     private IStoreUserService userService;
 
+    public static final String appid = "wxd3e18ab52464b10c";
+    public static final String secret = "001525f10908f042ef075316c979af12";
+
     /**
      * 微信登录
      * @param code
@@ -28,13 +31,9 @@ public class WxController extends BaseController {
      */
     @PostMapping("/wxLogin")
     public AjaxResult wxLogin(String code){
-        String appid="wxd3e18ab52464b10c";
-        String secret="001525f10908f042ef075316c979af12";
-        String jsCode=code;
-
         String url = String.format(
                 "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
-                appid, secret, jsCode
+                appid, secret, code
         );
         // 发送 GET 请求并获取响应openid和session_key
         String response = HttpRequest.get(url)
@@ -68,8 +67,6 @@ public class WxController extends BaseController {
      */
     @PostMapping("/getPhoneNumber")
     public AjaxResult getPhoneNumber(String code){
-        String appid="wxd3e18ab52464b10c";
-        String secret="001525f10908f042ef075316c979af12";
         // 构造请求 URL
         String url = String.format(
                 "https://api.weixin.qq.com/cgi-bin/token?appid=%s&secret=%s&grant_type=client_credential",
