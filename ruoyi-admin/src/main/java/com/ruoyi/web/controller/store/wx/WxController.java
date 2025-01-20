@@ -30,11 +30,11 @@ public class WxController extends BaseController {
     public AjaxResult wxLogin(String code){
         String appid="wxd3e18ab52464b10c";
         String secret="001525f10908f042ef075316c979af12";
-        String js_code=code;
+        String jsCode=code;
 
         String url = String.format(
                 "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
-                appid, secret, js_code
+                appid, secret, jsCode
         );
         // 发送 GET 请求并获取响应openid和session_key
         String response = HttpRequest.get(url)
