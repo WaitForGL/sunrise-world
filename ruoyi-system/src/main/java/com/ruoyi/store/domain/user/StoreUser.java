@@ -3,6 +3,8 @@ package com.ruoyi.store.domain.user;
 import com.ruoyi.common.core.domain.BaseEntity;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class StoreUser extends BaseEntity {
 
@@ -18,6 +20,26 @@ public class StoreUser extends BaseEntity {
      * 手机号
      */
     private String phone;
+
+    /**
+     * 头像地址
+     */
+    private String avatar;
+
+    /**
+     * 用户余额
+     */
+    private BigDecimal balance;
+
+    /**
+     * 可提现金额
+     */
+    private BigDecimal allowBalance;
+
+    /**
+     * 已提现金额
+     */
+    private BigDecimal alreadyBalance;
 
     /**
      * 用户标识（0:合伙人 1:vip 2:普通用户）

@@ -8,18 +8,22 @@
 		<id     property="id"         column="id"        />
 		<result property="username"       column="username"      />
 		<result property="phone"     column="phone"    />
+		<result property="avatar"     column="avatar"    />
+		<result property="balance"     column="balance"    />
+		<result property="allowBalance"     column="allow_balance"    />
+		<result property="alreadyBalance"     column="already_balance"    />
 		<result property="userType"     column="user_type"    />
 		<result property="openId"     column="open_id"    />
 		<result property="status"     column="status"    />
 	</resultMap>
 
 	<sql id="selectStoreIndexTypeVo">
-        select id, username, phone,user_type,open_id,status
+        select id, username, phone,avatar,balance,allowBalance,alreadyBalance,user_type,open_id,status
 		from store_user
     </sql>
 
 	<select id="selectByOpenid" parameterType="String" resultType="StoreUser">
-		select id, username, phone,user_type,open_id,status
+		select id, username, phone,avatar,balance,allowBalance,alreadyBalance,user_type,open_id,status
 		from store_user
 		where open_id = #{openId}
 	</select>
@@ -27,15 +31,25 @@
 
 	<insert id="insertUserOpenId" parameterType="String">
 		insert into store_user(
-		<if test="openId != null">open_id,</if>
-
+		<if test="username != null">username,</if>
+		<if test="phone != null">phone,</if>
+		<if test="avatar != null">avatar,</if>
+		<if test="openId != null">open_id</if>
 		)values(
-		<if test="openId != null">#{openId},</if>
+		<if test="username != null">#{username},</if>
+		<if test="phone != null">#{phone},</if>
+		<if test="avatar != null">#{avatar},</if>
+		<if test="openId != null">#{openId}</if>
 		)
 	</insert>
 
 
-
+	<select id="userIndex" parameterType="com.ruoyi.store.domain.user.request.IndexCountRequest" resultType="com.ruoyi.store.domain.user.response.IndexCountVo">
+		SELECT
+				(SELECT COUNT(*) FROM store_focus where user_id =#{userId}) AS focusNum,
+				(SELECT COUNT(*) FROM store_collect where user_id =#{userId}) AS collectNum,
+				(SELECT COUNT(*) FROM store_history where user_id =#{userId}) AS historyNum;
+	</select>
 	
 
 

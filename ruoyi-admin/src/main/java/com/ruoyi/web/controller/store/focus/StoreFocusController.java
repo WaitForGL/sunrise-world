@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 获取首页个人关注店铺的点
+ */
 @RestController
 @RequestMapping("/store/focus")
 public class StoreFocusController extends BaseController {

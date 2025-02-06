@@ -24,42 +24,6 @@ public class WxController extends BaseController {
     public static final String secret = "001525f10908f042ef075316c979af12";
 
     /**
-     * 微信登录
-     * @param code
-     * @return
-     */
-    @PostMapping("/wxLogin")
-    public AjaxResult wxLogin(String code){
-        String url = String.format(
-                "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
-                appid, secret, code
-        );
-        // 发送 GET 请求并获取响应openid和session_key
-        String response = HttpRequest.get(url)
-                .timeout(5000)  // 设置超时时间
-                .execute()
-                .body();
-//        存入redis
-//        WXSessionModel wxSessionModel= JSON.parseObject(wxResult,WXSessionModel.class);
-//        redisService.set("user-redis-session: "+wxSessionModel.getOpenid(),wxSessionModel.getSession_key());
-        // 解析 JSON 数据
-        JSONObject jsonResponse = new JSONObject(response);
-        //校验openid是否存在
-        String openId = jsonResponse.getJSONObject("data").getStr("openid");
-        StoreUser storeUser = userService.selectByOpenid(openId);
-        //如果用户不存在数据库
-        if(ObjectUtil.isNull(storeUser)){
-            userService.insertUserOpenId(openId);
-            return AjaxResult.error("用户不存在");
-        }else {
-
-            return AjaxResult.success(jsonResponse);
-        }
-
-    }
-
-
-    /**
      * 获取用户手机号
      * @param code
      * @return
@@ -102,5 +66,51 @@ public class WxController extends BaseController {
 
         return AjaxResult.success("返回手机号",phoneResponse);
     }
+
+    /**
+     * 微信登录
+     * @param code
+     * @return
+     */
+    @PostMapping("/wxLogin")
+    public AjaxResult wxLogin(String code,String phone){
+        String url = String.format(
+                "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
+                appid, secret, code
+        );
+        // 发送 GET 请求并获取响应openid和session_key
+        String response = HttpRequest.get(url)
+                .timeout(5000)  // 设置超时时间
+                .execute()
+                .body();
+//        存入redis
+//        WXSessionModel wxSessionModel= JSON.parseObject(wxResult,WXSessionModel.class);
+//        redisService.set("user-redis-session: "+wxSessionModel.getOpenid(),wxSessionModel.getSession_key());
+        // 解析 JSON 数据
+        JSONObject jsonResponse = new JSONObject(response);
+//        //校验openid是否存在
+        String openId = jsonResponse.getStr("openid");
+        StoreUser storeUser = userService.selectByOpenid(openId);
+        //如果用户不存在数据库
+        if(ObjectUtil.isNull(storeUser)){
+            StoreUser newUser = new StoreUser();
+            newUser.setUsername("微信用户");
+            newUser.setPhone(phone);
+            newUser.setAvatar("https://www.iconsdb.com/icons/preview/black/house-xxl.png");
+            newUser.setOpenId(openId);
+
+            userService.insertUserOpenId(newUser);
+            return AjaxResult.success("新用户注册登录成功",newUser);
+        }else {
+
+            return AjaxResult.success("用户登录成功",storeUser);
+        }
+
+    }
+
+
+
+
+
 
 }

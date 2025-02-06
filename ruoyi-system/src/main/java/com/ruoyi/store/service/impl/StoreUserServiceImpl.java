@@ -1,6 +1,8 @@
 package com.ruoyi.store.service.impl;
 
 import com.ruoyi.store.domain.user.StoreUser;
+import com.ruoyi.store.domain.user.request.IndexCountRequest;
+import com.ruoyi.store.domain.user.response.IndexCountVo;
 import com.ruoyi.store.mapper.StoreUserMapper;
 import com.ruoyi.store.service.IStoreUserService;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,13 @@ public class StoreUserServiceImpl implements IStoreUserService {
     }
 
     @Override
-    public void insertUserOpenId(String openId) {
-        mapper.insertUserOpenId(openId);
+    public void insertUserOpenId(StoreUser storeUser) {
+        mapper.insertUserOpenId(storeUser);
+    }
+
+    @Override
+    public IndexCountVo userIndex(IndexCountRequest request) {
+        IndexCountVo indexCountVo = mapper.userIndex(request);
+        return indexCountVo;
     }
 }
