@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class StoreUser extends BaseEntity {
+public class StoreUser{
 
     private static final long serialVersionUID = 1L;
 

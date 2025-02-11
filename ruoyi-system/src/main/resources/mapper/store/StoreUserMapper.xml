@@ -18,12 +18,12 @@
 	</resultMap>
 
 	<sql id="selectStoreIndexTypeVo">
-        select id, username, phone,avatar,balance,allowBalance,alreadyBalance,user_type,open_id,status
+        select id, username, phone,avatar,balance,allow_balance,already_balance,user_type,open_id,status
 		from store_user
     </sql>
 
-	<select id="selectByOpenid" parameterType="String" resultType="StoreUser">
-		select id, username, phone,avatar,balance,allowBalance,alreadyBalance,user_type,open_id,status
+	<select id="selectByOpenid" parameterType="String" resultMap="StoreUserResult">
+		select id, username, phone,avatar,balance,allow_balance,already_balance,user_type,open_id,status
 		from store_user
 		where open_id = #{openId}
 	</select>
