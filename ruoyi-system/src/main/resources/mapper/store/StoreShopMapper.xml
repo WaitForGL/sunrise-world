@@ -31,8 +31,8 @@
 	<select id="isHot" resultType="StoreShop">
 		select *
 		from store_shop
-		where is_hot = 1
-		order by add_time desc
+		order by is_hot desc,
+		         add_time desc;
 	</select>
 
 
