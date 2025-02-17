@@ -19,7 +19,6 @@
 		select shop_id
 		from store_focus
 		where user_id = #{userId}
-
 	</select>
 
 	<select id="getStoresById" resultType="com.ruoyi.store.domain.focus.response.StoreFocusResponse">

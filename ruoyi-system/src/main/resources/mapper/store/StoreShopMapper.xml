@@ -20,6 +20,11 @@
 		from store_shop
     </sql>
 
+	<select id="selectIdsByUserId" resultType="StoreShop">
+		select *
+		from store_shop
+	</select>
+
 	
 
 
