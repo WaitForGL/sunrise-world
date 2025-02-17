@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
-
 @RestController
 @RequestMapping("/store/type")
 public class StoreIndexTypeController extends BaseController {
