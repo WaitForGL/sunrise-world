@@ -13,10 +13,11 @@
 		<result property="shopOwner"     column="shop_owner"    />
 		<result property="shopLat"     column="shop_lat"    />
 		<result property="shopLon"     column="shop_lon"    />
+		<result property="shopLever"     column="shop_lever"    />
 	</resultMap>
 
 	<sql id="selectStoreIndexTypeVo">
-        select id, shop_title, is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon
+        select id, shop_title, is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon,shop_lever
 		from store_shop
     </sql>
 

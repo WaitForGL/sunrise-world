@@ -31,7 +31,7 @@ public class StoreIndexTypeController extends BaseController {
         return AjaxResult.success("首页分类返回",list);
     }
 
-    @GetMapping("/StoreList")
+    @GetMapping("/storeList")
     public AjaxResult StoreListByRange(@RequestParam double latitude, @RequestParam double longitude,@RequestParam double distance){
         List<StoreShop> storeList = shopService.StoreListByRange(latitude, longitude,distance);
         return AjaxResult.success("首页范围内店铺",storeList);

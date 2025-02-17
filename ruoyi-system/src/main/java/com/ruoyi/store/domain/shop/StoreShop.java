@@ -44,4 +44,9 @@ public class StoreShop {
      * 店铺经度
      */
     private Double shopLon;
+
+    /**
+     * 店铺展示级别
+     */
+    private Integer shopLever;
 }
