@@ -1,6 +1,7 @@
 package com.ruoyi.store.service.impl;
 
 import com.ruoyi.store.domain.shop.StoreShop;
+import com.ruoyi.store.domain.shop.request.HotShopRequest;
 import com.ruoyi.store.mapper.StoreShopMapper;
 import com.ruoyi.store.service.IStoreShopService;
 import com.ruoyi.store.utils.DistanceUtils;
@@ -42,8 +43,8 @@ public class StoreShopServiceImpl implements IStoreShopService {
      * @return
      */
     @Override
-    public List<StoreShop> isHot() {
-        List<StoreShop> hotList = mapper.isHot();
+    public List<StoreShop> isHot(HotShopRequest request) {
+        List<StoreShop> hotList = mapper.isHot(request);
         return hotList;
     }
 }

@@ -12,6 +12,7 @@
 		<result property="shopPrice"     column="shop_price"    />
 		<result property="shopArea"     column="shop_area"    />
 		<result property="shopOwner"     column="shop_owner"    />
+		<result property="shopDistrict"     column="shop_district"    />
 		<result property="shopLat"     column="shop_lat"    />
 		<result property="shopLon"     column="shop_lon"    />
 		<result property="shopLever"     column="shop_lever"    />
@@ -19,7 +20,7 @@
 	</resultMap>
 
 	<sql id="selectStoreIndexTypeVo">
-        select id, shop_title, shop_type,is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon,shop_lever,add_time
+        select id, shop_title, shop_type,is_hot, shop_price, shop_area, shop_owner, shop_district,shop_lat, shop_lon,shop_lever,add_time
 		from store_shop
     </sql>
 
@@ -28,9 +29,23 @@
 		from store_shop
 	</select>
 
-	<select id="isHot" resultType="StoreShop">
+	<select id="isHot" parameterType="com.ruoyi.store.domain.shop.request.HotShopRequest" resultType="StoreShop">
 		select *
 		from store_shop
+		<where>
+			<if test="shopTitle != null">
+				AND shop_title LIKE CONCAT('%', #{shopTitle}, '%')
+			</if>
+			<if test="shopAreaMin != null and shopAreaMax != null">
+				AND shop_area BETWEEN #{shopAreaMin} AND #{shopAreaMax}
+			</if>
+			<if test="shopPriceMin != null and shopPriceMax != null">
+				AND shop_price BETWEEN #{shopPriceMin} AND #{shopPriceMax}
+			</if>
+			<if test="shopDistrict != null">
+				AND shop_district = #{shopDistrict}
+			</if>
+		</where>
 		order by is_hot desc,
 		         add_time desc;
 	</select>

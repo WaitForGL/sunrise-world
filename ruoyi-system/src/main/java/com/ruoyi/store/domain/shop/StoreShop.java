@@ -42,6 +42,11 @@ public class StoreShop {
     private Long shopOwner;
 
     /**
+     * 店铺所属行政区
+     */
+    private String shopDistrict;
+
+    /**
      * 店铺纬度
      */
     private Double shopLat;
