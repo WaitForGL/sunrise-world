@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.store.mapper.StoreShopMapper">
+
+	<resultMap type="StoreShop" id="StoreShopResult">
+		<id     property="id"         column="id"        />
+		<result property="shopTitle"       column="shop_title"      />
+		<result property="isHot"     column="is_hot"    />
+		<result property="shopPrice"     column="shop_price"    />
+		<result property="shopArea"     column="shop_area"    />
+		<result property="shopOwner"     column="shop_owner"    />
+		<result property="shopLat"     column="shop_lat"    />
+		<result property="shopLon"     column="shop_lon"    />
+	</resultMap>
+
+	<sql id="selectStoreIndexTypeVo">
+        select id, shop_title, is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon
+		from store_shop
+    </sql>
+
+	
+
+
+</mapper> 

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+
 @RestController
 @RequestMapping("/store/type")
 public class StoreIndexTypeController extends BaseController {
@@ -18,10 +21,15 @@ public class StoreIndexTypeController extends BaseController {
     @Resource
     private IStoreIndexTypeService service;
 
+
     @GetMapping("/list")
     public AjaxResult list(){
         List<StoreIndexTypeVo> list = service.list();
         return AjaxResult.success("首页分类返回",list);
     }
+
+
+
+
 
 }
