@@ -16,6 +16,11 @@ public class StoreShop {
     private String shopTitle;
 
     /**
+     * 店铺类型（0 租 1 转）
+     */
+    private String shopType;
+
+    /**
      * 是否热门（0否 1 是）
      */
     private Integer isHot;

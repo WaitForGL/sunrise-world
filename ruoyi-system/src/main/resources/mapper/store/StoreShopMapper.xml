@@ -7,6 +7,7 @@
 	<resultMap type="StoreShop" id="StoreShopResult">
 		<id     property="id"         column="id"        />
 		<result property="shopTitle"       column="shop_title"      />
+		<result property="shopType"       column="shop_type"      />
 		<result property="isHot"     column="is_hot"    />
 		<result property="shopPrice"     column="shop_price"    />
 		<result property="shopArea"     column="shop_area"    />
@@ -17,7 +18,7 @@
 	</resultMap>
 
 	<sql id="selectStoreIndexTypeVo">
-        select id, shop_title, is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon,shop_lever
+        select id, shop_title, shop_type,is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon,shop_lever
 		from store_shop
     </sql>
 
