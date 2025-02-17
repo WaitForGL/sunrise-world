@@ -15,17 +15,27 @@
 		<result property="shopLat"     column="shop_lat"    />
 		<result property="shopLon"     column="shop_lon"    />
 		<result property="shopLever"     column="shop_lever"    />
+		<result property="addTime"     column="add_time"    />
 	</resultMap>
 
 	<sql id="selectStoreIndexTypeVo">
-        select id, shop_title, shop_type,is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon,shop_lever
+        select id, shop_title, shop_type,is_hot, shop_price, shop_area, shop_owner, shop_lat, shop_lon,shop_lever,add_time
 		from store_shop
     </sql>
 
-	<select id="selectIdsByUserId" resultType="StoreShop">
+	<select id="getAllStores" resultType="StoreShop">
 		select *
 		from store_shop
 	</select>
+
+	<select id="isHot" resultType="StoreShop">
+		select *
+		from store_shop
+		where is_hot = 1
+		order by add_time desc
+	</select>
+
+
 
 	
 

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IStoreShopService {
     List<StoreShop> StoreListByRange(double latitude, double longitude, double distance);
+
+    List<StoreShop> isHot();
 }

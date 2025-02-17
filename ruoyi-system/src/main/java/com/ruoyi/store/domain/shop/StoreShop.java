@@ -3,6 +3,7 @@ package com.ruoyi.store.domain.shop;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 public class StoreShop {
@@ -54,4 +55,9 @@ public class StoreShop {
      * 店铺展示级别
      */
     private Integer shopLever;
+
+    /**
+     * 店铺展示级别
+     */
+    private Date addTime;
 }
