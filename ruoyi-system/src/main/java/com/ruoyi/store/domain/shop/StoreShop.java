@@ -17,6 +17,11 @@ public class StoreShop {
     private String shopTitle;
 
     /**
+     * 商铺图片
+     */
+    private String shopPhoto;
+
+    /**
      * 店铺类型（0 租 1 转）
      */
     private String shopType;
