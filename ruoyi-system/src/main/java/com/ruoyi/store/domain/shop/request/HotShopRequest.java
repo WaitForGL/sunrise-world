@@ -15,11 +15,11 @@ public class HotShopRequest {
     /**
      * 商铺面积范围最小值
      */
-    private String shopAreaMin;
+    private Integer shopAreaMin;
     /**
      * 商铺面积范围最大值
      */
-    private String shopAreaMax;
+    private Integer shopAreaMax;
 
     /**
      * 商铺价格最小值

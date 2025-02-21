@@ -39,7 +39,7 @@ public class StoreShop {
     /**
      * 商铺面积
      */
-    private String shopArea;
+    private Integer shopArea;
 
     /**
      * 商品所属人

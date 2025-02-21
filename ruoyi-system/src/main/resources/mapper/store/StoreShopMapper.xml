@@ -25,12 +25,12 @@
 		from store_shop
     </sql>
 
-	<select id="getAllStores" resultType="StoreShop">
+	<select id="getAllStores" resultMap="StoreShopResult">
 		select *
 		from store_shop
 	</select>
 
-	<select id="isHot" parameterType="com.ruoyi.store.domain.shop.request.HotShopRequest" resultType="StoreShop">
+	<select id="isHot" parameterType="com.ruoyi.store.domain.shop.request.HotShopRequest" resultMap="StoreShopResult">
 		select *
 		from store_shop
 		<where>
