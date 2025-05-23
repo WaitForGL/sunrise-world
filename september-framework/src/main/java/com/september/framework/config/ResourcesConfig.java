@@ -1,7 +1,7 @@
 package com.september.framework.config;
 
 import java.util.concurrent.TimeUnit;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
@@ -23,7 +23,7 @@ import com.september.framework.interceptor.RepeatSubmitInterceptor;
 @Configuration
 public class ResourcesConfig implements WebMvcConfigurer
 {
-    @Autowired
+    @Resource
     private RepeatSubmitInterceptor repeatSubmitInterceptor;
 
     @Override

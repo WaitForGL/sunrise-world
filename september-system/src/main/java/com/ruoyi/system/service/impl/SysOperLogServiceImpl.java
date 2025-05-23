@@ -1,7 +1,7 @@
 package com.september.system.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.september.system.domain.SysOperLog;
 import com.september.system.mapper.SysOperLogMapper;
@@ -15,7 +15,7 @@ import com.september.system.service.ISysOperLogService;
 @Service
 public class SysOperLogServiceImpl implements ISysOperLogService
 {
-    @Autowired
+    @Resource
     private SysOperLogMapper operLogMapper;
 
     /**

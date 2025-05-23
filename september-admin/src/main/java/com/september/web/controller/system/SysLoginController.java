@@ -2,7 +2,7 @@ package com.september.web.controller.system;
 
 import java.util.List;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,16 +27,16 @@ import com.september.system.service.ISysMenuService;
 @RestController
 public class SysLoginController
 {
-    @Autowired
+    @Resource
     private SysLoginService loginService;
 
-    @Autowired
+    @Resource
     private ISysMenuService menuService;
 
-    @Autowired
+    @Resource
     private SysPermissionService permissionService;
 
-    @Autowired
+    @Resource
     private TokenService tokenService;
 
     /**

@@ -1,7 +1,7 @@
 package com.september.generator.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.september.common.core.text.Convert;
 import com.september.generator.domain.GenTableColumn;
@@ -15,7 +15,7 @@ import com.september.generator.mapper.GenTableColumnMapper;
 @Service
 public class GenTableColumnServiceImpl implements IGenTableColumnService 
 {
-	@Autowired
+	@Resource
 	private GenTableColumnMapper genTableColumnMapper;
 
 	/**

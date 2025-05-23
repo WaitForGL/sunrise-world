@@ -1,7 +1,7 @@
 package com.september.system.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.september.system.domain.SysLogininfor;
 import com.september.system.mapper.SysLogininforMapper;
@@ -16,7 +16,7 @@ import com.september.system.service.ISysLogininforService;
 public class SysLogininforServiceImpl implements ISysLogininforService
 {
 
-    @Autowired
+    @Resource
     private SysLogininforMapper logininforMapper;
 
     /**

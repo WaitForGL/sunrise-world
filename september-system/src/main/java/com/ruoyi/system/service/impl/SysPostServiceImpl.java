@@ -1,7 +1,7 @@
 package com.september.system.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.september.common.constant.UserConstants;
 import com.september.common.exception.ServiceException;
@@ -19,10 +19,10 @@ import com.september.system.service.ISysPostService;
 @Service
 public class SysPostServiceImpl implements ISysPostService
 {
-    @Autowired
+    @Resource
     private SysPostMapper postMapper;
 
-    @Autowired
+    @Resource
     private SysUserPostMapper userPostMapper;
 
     /**

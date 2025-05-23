@@ -1,7 +1,7 @@
 package com.september.web.controller.system;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +29,7 @@ import com.september.system.service.ISysNoticeService;
 @RequestMapping("/system/notice")
 public class SysNoticeController extends BaseController
 {
-    @Autowired
+    @Resource
     private ISysNoticeService noticeService;
 
     /**

@@ -1,7 +1,7 @@
 package com.september.system.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.september.common.core.domain.entity.SysDictData;
 import com.september.common.utils.DictUtils;
@@ -16,7 +16,7 @@ import com.september.system.service.ISysDictDataService;
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService
 {
-    @Autowired
+    @Resource
     private SysDictDataMapper dictDataMapper;
 
     /**

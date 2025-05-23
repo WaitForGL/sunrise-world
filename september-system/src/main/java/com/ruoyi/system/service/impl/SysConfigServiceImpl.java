@@ -3,7 +3,7 @@ package com.september.system.service.impl;
 import java.util.Collection;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.september.common.annotation.DataSource;
 import com.september.common.constant.CacheConstants;
@@ -25,10 +25,10 @@ import com.september.system.service.ISysConfigService;
 @Service
 public class SysConfigServiceImpl implements ISysConfigService
 {
-    @Autowired
+    @Resource
     private SysConfigMapper configMapper;
 
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
     /**

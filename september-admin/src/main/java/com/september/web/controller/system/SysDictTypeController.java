@@ -2,7 +2,7 @@ package com.september.web.controller.system;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +31,7 @@ import com.september.system.service.ISysDictTypeService;
 @RequestMapping("/system/dict/type")
 public class SysDictTypeController extends BaseController
 {
-    @Autowired
+    @Resource
     private ISysDictTypeService dictTypeService;
 
     @PreAuthorize("@ss.hasPermi('system:dict:list')")

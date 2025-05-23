@@ -1,7 +1,7 @@
 package com.september.quartz.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.september.quartz.domain.SysJobLog;
 import com.september.quartz.mapper.SysJobLogMapper;
@@ -15,7 +15,7 @@ import com.september.quartz.service.ISysJobLogService;
 @Service
 public class SysJobLogServiceImpl implements ISysJobLogService
 {
-    @Autowired
+    @Resource
     private SysJobLogMapper jobLogMapper;
 
     /**
