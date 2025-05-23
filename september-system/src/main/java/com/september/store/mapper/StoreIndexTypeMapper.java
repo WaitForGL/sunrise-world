@@ -1,7 +1,6 @@
 package com.september.store.mapper;
 
 import com.september.store.domain.index.StoreIndexType;
-import com.september.store.domain.index.vo.StoreIndexTypeVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
