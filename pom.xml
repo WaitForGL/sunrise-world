@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-    <groupId>com.ruoyi</groupId>
-    <artifactId>ruoyi</artifactId>
+    <groupId>com.september</groupId>
+    <artifactId>september</artifactId>
     <version>3.8.8</version>
 
-    <name>ruoyi</name>
-    <url>http://www.ruoyi.vip</url>
+    <name>september</name>
+    <url>http://www.september.vip</url>
     <description>若依管理系统</description>
     
     <properties>
-        <ruoyi.version>3.8.8</ruoyi.version>
+        <september.version>3.8.8</september.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -185,49 +185,49 @@
 
             <!-- 定时任务-->
             <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-quartz</artifactId>
-                <version>${ruoyi.version}</version>
+                <groupId>com.september</groupId>
+                <artifactId>september-quartz</artifactId>
+                <version>${september.version}</version>
             </dependency>
 
             <!-- 代码生成-->
             <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-generator</artifactId>
-                <version>${ruoyi.version}</version>
+                <groupId>com.september</groupId>
+                <artifactId>september-generator</artifactId>
+                <version>${september.version}</version>
             </dependency>
 
             <!-- 核心模块-->
             <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-framework</artifactId>
-                <version>${ruoyi.version}</version>
+                <groupId>com.september</groupId>
+                <artifactId>september-framework</artifactId>
+                <version>${september.version}</version>
             </dependency>
 
             <!-- 系统模块-->
             <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-system</artifactId>
-                <version>${ruoyi.version}</version>
+                <groupId>com.september</groupId>
+                <artifactId>september-system</artifactId>
+                <version>${september.version}</version>
             </dependency>
 
             <!-- 通用工具-->
             <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-common</artifactId>
-                <version>${ruoyi.version}</version>
+                <groupId>com.september</groupId>
+                <artifactId>september-common</artifactId>
+                <version>${september.version}</version>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
 
     <modules>
-        <module>ruoyi-admin</module>
-        <module>ruoyi-framework</module>
-        <module>ruoyi-system</module>
-        <module>ruoyi-quartz</module>
-        <module>ruoyi-generator</module>
-        <module>ruoyi-common</module>
+        <module>september-admin</module>
+        <module>september-framework</module>
+        <module>september-system</module>
+        <module>september-quartz</module>
+        <module>september-generator</module>
+        <module>september-common</module>
     </modules>
     <packaging>pom</packaging>
 
