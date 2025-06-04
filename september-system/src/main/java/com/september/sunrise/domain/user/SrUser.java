@@ -5,7 +5,7 @@ import com.september.common.core.domain.BaseEntity;
 import lombok.Data;
 
 @Data
-public class SrUser extends BaseEntity {
+public class SrUser {
 
     private static final long serialVersionUID = 1L;
 

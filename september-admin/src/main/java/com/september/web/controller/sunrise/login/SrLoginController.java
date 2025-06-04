@@ -2,14 +2,14 @@ package com.september.web.controller.sunrise.login;
 
 import com.september.common.constant.Constants;
 import com.september.common.core.domain.AjaxResult;
+import com.september.common.core.domain.entity.SysUser;
+import com.september.common.core.domain.model.LoginUser;
+import com.september.common.utils.SecurityUtils;
 import com.september.sunrise.domain.login.request.SrUserLoginRequest;
 import com.september.sunrise.domain.register.request.SrUserRegisterRequest;
 import com.september.sunrise.service.SrLoginService;
 import com.september.sunrise.service.SrRegisterService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -52,4 +52,22 @@ public class SrLoginController {
         ajax.put(Constants.TOKEN, token);
         return ajax;
     }
+
+    /**
+     * 获取用户信息
+     *
+     * @return 用户信息
+     */
+    @GetMapping("/getUserInfo")
+    public AjaxResult getUserInfo()
+    {
+        LoginUser loginUser = SecurityUtils.getLoginUser();
+        SysUser user = loginUser.getUser();
+        AjaxResult ajax = AjaxResult.success();
+        ajax.put("user", user);
+        return ajax;
+    }
+
+
+
 }

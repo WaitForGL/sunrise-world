@@ -27,20 +27,21 @@ public class SrLoginServiceImpl extends ServiceImpl<SrLoginMapper, SrUser> imple
     @Value("${token.secret}")
     private String secret;
 
-    @Resource
-    SrLoginMapper loginMapper;
     @Override
     public String login(SrUserLoginRequest request) {
+        if(StringUtils.isNull(request.getUsername())){
+            JAssert.justFailed("请输入用户名");
+        }
         LambdaQueryWrapper<SrUser> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SrUser::getUsername,request.getUsername());
-        SrUser srUser = loginMapper.selectOne(queryWrapper);
+        SrUser srUser = baseMapper.selectOne(queryWrapper);
         if(ObjectUtil.isNull(srUser)){
             JAssert.justFailed("用户不存在");
         }
         if(StringUtils.isNull(request.getPassword())){
             JAssert.justFailed("未输入密码");
         }
-        if(request.getPassword().equals(srUser.getPassword())){
+        if(!request.getPassword().equals(srUser.getPassword())){
             JAssert.justFailed("密码错误");
         }
         // 生成token
