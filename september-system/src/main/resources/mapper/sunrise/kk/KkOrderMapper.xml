@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.september.sunrise.kk.mapper.KkOrderMapper">
+
+	<!-- 条件查询订单列表 -->
+	<select id="findOrders" parameterType="com.september.sunrise.kk.dto.OrderQuery" resultType="com.september.sunrise.kk.domain.KkOrder">
+		SELECT *
+		FROM kk_order
+		WHERE 1=1
+		<if test="playmateName != null and playmateName != ''">
+			AND playmate_name LIKE CONCAT('%', #{playmateName}, '%')
+		</if>
+		<if test="bossAccount != null and bossAccount != ''">
+			AND boss_account LIKE CONCAT('%', #{bossAccount}, '%')
+		</if>
+		<if test="orderStatus != null">
+			AND order_status = #{orderStatus}
+		</if>
+		<if test="startTime != null">
+			AND order_time &gt;= #{startTime}
+		</if>
+		<if test="endTime != null">
+			AND order_time &lt;= #{endTime}
+		</if>
+		AND is_delete = 0
+		ORDER BY order_time DESC
+	</select>
+
+	<!-- 根据ID查询订单 -->
+	<select id="findById" parameterType="long" resultType="com.september.sunrise.kk.domain.KkOrder">
+		SELECT *
+		FROM kk_order
+		WHERE id = #{id} AND is_delete = 0
+	</select>
+
+	<!-- 新增订单 -->
+	<insert id="insertOrder" parameterType="com.september.sunrise.kk.domain.KkOrder">
+		INSERT INTO kk_order (
+			order_no, order_time, customer_service_id, boss_account, playmate_name,
+			category, unit_price, quantity, commission_rate, discount_rate,
+			total_after_discount, order_total, store_income, playmate_income,
+			order_status, report_confirm_status, remark, create_time, update_time, is_delete
+		)
+		VALUES (
+				   #{orderNo}, #{orderTime}, #{customerServiceId}, #{bossAccount}, #{playmateName},
+				   #{category}, #{unitPrice}, #{quantity}, #{commissionRate}, #{discountRate},
+				   #{totalAfterDiscount}, #{orderTotal}, #{storeIncome}, #{playmateIncome},
+				   #{orderStatus}, #{reportConfirmStatus}, #{remark}, NOW(), NOW(), 0
+			   )
+	</insert>
+
+	<!-- 编辑订单 -->
+	<update id="updateOrder" parameterType="com.september.sunrise.kk.domain.KkOrder">
+		UPDATE kk_order
+		SET order_no = #{orderNo},
+			order_time = #{orderTime},
+			customer_service_id = #{customerServiceId},
+			boss_account = #{bossAccount},
+			playmate_name = #{playmateName},
+			category = #{category},
+			unit_price = #{unitPrice},
+			quantity = #{quantity},
+			commission_rate = #{commissionRate},
+			discount_rate = #{discountRate},
+			total_after_discount = #{totalAfterDiscount},
+			order_total = #{orderTotal},
+			store_income = #{storeIncome},
+			playmate_income = #{playmateIncome},
+			order_status = #{orderStatus},
+			report_confirm_status = #{reportConfirmStatus},
+			remark = #{remark},
+			update_time = NOW()
+		WHERE id = #{id} AND is_delete = 0
+	</update>
+
+	<!-- 逻辑删除订单 -->
+	<update id="removeOrderById" parameterType="long">
+		UPDATE kk_order
+		SET is_delete = 1, update_time = NOW()
+		WHERE id = #{id} AND is_delete = 0
+	</update>
+
+	<!-- 物理删除订单 -->
+	<delete id="deleteOrderById" parameterType="long">
+		DELETE FROM kk_order
+		WHERE id = #{id}
+	</delete>
+
+</mapper>

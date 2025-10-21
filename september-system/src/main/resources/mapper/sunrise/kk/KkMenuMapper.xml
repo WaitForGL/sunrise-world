@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.september.sunrise.kk.mapper.KkMenuMapper">
+
+	<!-- 查询陪玩可见菜单 -->
+	<select id="findMenusByRoleCode" parameterType="string" resultType="com.september.sunrise.kk.domain.KkMenu">
+		SELECT m.*
+		FROM kk_menu m
+				 INNER JOIN kk_role_menu rm ON rm.menu_id = m.id
+				 INNER JOIN kk_role r ON r.id = rm.role_id
+		WHERE r.role_code = #{roleCode}
+		  AND m.status = 1
+		ORDER BY m.sort ASC
+	</select>
+
+	<!-- 查询全部菜单（管理员/老板可见） -->
+	<select id="findAllMenus" resultType="com.september.sunrise.kk.domain.KkMenu">
+		SELECT *
+		FROM kk_menu
+		WHERE status = 1
+		ORDER BY sort ASC
+	</select>
+
+</mapper>

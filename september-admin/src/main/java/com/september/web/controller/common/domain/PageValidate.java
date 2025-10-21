@@ -1,0 +1,32 @@
+package com.september.web.controller.common.domain;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import java.io.Serializable;
+
+@Data
+@ApiModel("分页参数")
+public class PageValidate implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    // 当前分页
+    @DecimalMin(value = "1", message = "pageNo参数必须大于0的数字")
+    public Integer pageNo = 1;
+
+    // 每页条数
+    @DecimalMin(value = "1", message = "pageSize参数必须是大于0的数字")
+    @DecimalMax(value = "1000", message = "pageSize参数必须是小于1000的数字")
+    private Integer pageSize = 20;
+
+    @ApiModelProperty(value = "开始时间")
+    private String startTime;
+
+    @ApiModelProperty(value = "结束时间")
+    private String endTime;
+
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.september.sunrise.kk.mapper.KkUserMapper">
+
+	<!-- 根据用户名查询 -->
+	<select id="findByUsername" resultType="com.september.sunrise.kk.domain.KkUser">
+		SELECT *
+		FROM kk_user
+		WHERE username = #{username} LIMIT 1
+	</select>
+
+	<!-- 查询管理员列表（部分字段 + 派单量） -->
+	<select id="findAllAdminsWithDispatch" resultType="com.september.sunrise.kk.domain.KkUser">
+		SELECT u.id, u.nickname, u.status, r.role_name AS roleName,
+			   IFNULL(o.dispatch_count,0) AS dispatchCount
+		FROM kk_user u
+				 INNER JOIN kk_user_role ur ON ur.user_id = u.id
+				 INNER JOIN kk_role r ON r.id = ur.role_id
+				 LEFT JOIN (
+			SELECT customer_service_id, COUNT(*) AS dispatch_count
+			FROM kk_order
+			GROUP BY customer_service_id
+		) o ON o.customer_service_id = u.id
+		WHERE r.role_code IN ('ADMIN','BOSS')
+		  AND u.is_delete = 0
+		ORDER BY u.create_time DESC
+	</select>
+
+	<!-- 查询陪玩列表 -->
+	<select id="findAllPlaymates" resultType="com.september.sunrise.kk.domain.KkUser">
+		SELECT u.id, u.create_time AS createTime, u.nickname, u.gender, u.status,
+			   u.wechat, u.phone, u.alipay_account, u.alipay_name,
+			   u.commission_rate, u.total_income, u.withdrawn_amount,
+			   (u.total_income - u.withdrawn_amount) AS remaining_amount,
+			   u.withdraw_lock, u.intro, u.avatar, u.remark
+		FROM kk_user u
+				 INNER JOIN kk_user_role ur ON ur.user_id = u.id
+				 INNER JOIN kk_role r ON r.id = ur.role_id
+		WHERE r.role_code = 'PLAYMATE'
+		  AND u.is_delete = 0
+		ORDER BY u.create_time DESC
+	</select>
+
+	<!-- 新增管理员 -->
+	<insert id="insertAdmin" parameterType="com.september.sunrise.kk.domain.KkUser">
+		INSERT INTO kk_user (username, password, nickname, status, role_code, create_time, update_time, is_delete)
+		VALUES (#{username}, #{password}, #{nickname}, #{status}, 'ADMIN', NOW(), NOW(), 0)
+	</insert>
+
+	<!-- 编辑管理员 -->
+	<update id="updateAdmin" parameterType="com.september.sunrise.kk.domain.KkUser">
+		UPDATE kk_user
+		SET
+		nickname = #{nickname},
+		status = #{status},
+		<if test="password != null and password != ''">
+			password = #{password},
+		</if>
+		update_time = NOW()
+		WHERE id = #{id} AND role_code = 'ADMIN' AND is_delete = 0
+	</update>
+
+	<!-- 逻辑删除管理员 -->
+	<update id="removeManager" parameterType="long">
+		UPDATE kk_user
+		SET is_delete = 1, update_time = NOW()
+		WHERE id = #{id} AND role_code = 'ADMIN' AND is_delete = 0
+	</update>
+
+	<!-- 物理删除管理员 -->
+	<delete id="deleteManager" parameterType="long">
+		DELETE FROM kk_user
+		WHERE id = #{id} AND role_code = 'ADMIN'
+	</delete>
+
+
+	<!-- 条件查询管理员 -->
+	<select id="findAdminsByKeyword" resultType="com.september.sunrise.kk.domain.KkUser">
+		SELECT u.id, u.nickname, u.status, r.role_name AS roleName,
+		IFNULL(o.dispatch_count,0) AS dispatchCount
+		FROM kk_user u
+		INNER JOIN kk_user_role ur ON ur.user_id = u.id
+		INNER JOIN kk_role r ON r.id = ur.role_id
+		LEFT JOIN (
+		SELECT customer_service_id, COUNT(*) AS dispatch_count
+		FROM kk_order
+		GROUP BY customer_service_id
+		) o ON o.customer_service_id = u.id
+		WHERE r.role_code IN ('ADMIN','BOSS')
+		AND u.is_delete = 0
+		<if test="keyword != null and keyword != ''">
+			AND (u.username LIKE CONCAT('%', #{keyword}, '%') OR u.nickname LIKE CONCAT('%', #{keyword}, '%'))
+		</if>
+		ORDER BY u.create_time DESC
+	</select>
+
+</mapper>
