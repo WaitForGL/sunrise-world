@@ -36,4 +36,6 @@ public interface OrderService {
      * 物理删除订单
      */
     void deleteOrder(Long id);
+
+    void auditOrder(KkOrder order);
 }

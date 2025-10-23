@@ -97,4 +97,13 @@
 		ORDER BY u.create_time DESC
 	</select>
 
+	<!-- 更新增加陪玩余额 -->
+	<update id="updatePlaymateIncome">
+		UPDATE kk_user
+		SET total_income = total_income + #{income},
+			remaining_amount = remaining_amount + #{income}
+		WHERE id = #{playmateId} AND role_code = 'PLAYMATE'
+	</update>
+
+
 </mapper>

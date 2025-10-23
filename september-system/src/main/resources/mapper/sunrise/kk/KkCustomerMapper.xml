@@ -12,4 +12,14 @@
 		ORDER BY register_time DESC
 	</select>
 
+
+	<!-- 扣除顾客余额 -->
+	<update id="decreaseRemainingBalance">
+		UPDATE kk_customer
+		SET remaining_balance = remaining_balance - #{amount},
+			totalConsume = totalConsume + #{amount}
+		WHERE id = #{customerId} AND remaining_balance >= #{amount}
+	</update>
+
+
 </mapper>

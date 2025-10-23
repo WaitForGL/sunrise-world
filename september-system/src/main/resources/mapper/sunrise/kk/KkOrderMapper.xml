@@ -36,21 +36,33 @@
 		WHERE id = #{id} AND is_delete = 0
 	</select>
 
-	<!-- 新增订单 -->
 	<insert id="insertOrder" parameterType="com.september.sunrise.kk.domain.KkOrder">
 		INSERT INTO kk_order (
-			order_no, order_time, customer_service_id, boss_account, playmate_name,
-			category, unit_price, quantity, commission_rate, discount_rate,
-			total_after_discount, order_total, store_income, playmate_income,
-			order_status, report_confirm_status, remark, create_time, update_time, is_delete
+			order_no, order_time, customer_service_id, customer_id, playmate_id,
+			boss_account, playmate_name, category, unit_price, quantity,
+			commission_rate, discount_rate, total_after_discount, order_total,
+			store_income, playmate_income, order_status, report_confirm_status,
+			remark, create_time, update_time, is_delete
 		)
 		VALUES (
-				   #{orderNo}, #{orderTime}, #{customerServiceId}, #{bossAccount}, #{playmateName},
-				   #{category}, #{unitPrice}, #{quantity}, #{commissionRate}, #{discountRate},
-				   #{totalAfterDiscount}, #{orderTotal}, #{storeIncome}, #{playmateIncome},
-				   #{orderStatus}, #{reportConfirmStatus}, #{remark}, NOW(), NOW(), 0
+				   #{orderNo}, #{orderTime}, #{customerServiceId}, #{customerId}, #{playmateId},
+				   #{bossAccount}, #{playmateName}, #{category}, #{unitPrice}, #{quantity},
+				   #{commissionRate}, #{discountRate}, #{totalAfterDiscount}, #{orderTotal},
+				   #{storeIncome}, #{playmateIncome}, 1, 0, #{remark}, NOW(), NOW(), 0
 			   )
 	</insert>
+
+
+	<!-- 审核订单（确认报单） -->
+	<update id="auditOrder" parameterType="long">
+		UPDATE kk_order
+		SET report_confirm_status = 1,
+			order_status = 2,
+			update_time = NOW()
+		WHERE id = #{id}
+		  AND is_delete = 0
+		  AND report_confirm_status = 0
+	</update>
 
 	<!-- 编辑订单 -->
 	<update id="updateOrder" parameterType="com.september.sunrise.kk.domain.KkOrder">

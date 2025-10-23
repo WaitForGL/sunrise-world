@@ -15,6 +15,10 @@ public class KkOrder {
     private String orderNo;           // 订单编号
     private Date orderTime;           // 订单时间
 
+    private Long customerId;   // 顾客ID，对应kk_customer.id
+    private Long playmateId;   // 陪玩ID，对应kk_user.id
+
+
     private Long customerServiceId;   // 客服ID
     private String bossAccount;       // 老板账户
     private String playmateName;      // 陪玩名称

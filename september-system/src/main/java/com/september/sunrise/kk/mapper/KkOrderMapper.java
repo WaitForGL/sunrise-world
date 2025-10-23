@@ -26,6 +26,11 @@ public interface KkOrderMapper {
     int insertOrder(KkOrder order);
 
     /**
+     * 审核订单（确认报单）
+     */
+    int auditOrder(@Param("id") Long id);
+
+    /**
      * 编辑订单
      */
     int updateOrder(KkOrder order);

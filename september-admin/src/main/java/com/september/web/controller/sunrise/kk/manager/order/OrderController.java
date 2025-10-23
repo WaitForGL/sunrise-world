@@ -68,6 +68,17 @@ public class OrderController {
     }
 
     /**
+     * 审核订单（确认报单）
+     */
+    @PostMapping("/audit")
+    @ApiOperation("审核订单（确认报单）")
+    public AjaxResult auditOrder(@RequestBody KkOrder order) {
+        orderService.auditOrder(order);
+        return AjaxResult.success("订单审核成功");
+    }
+
+
+    /**
      * 编辑订单
      */
     @PostMapping("/update")
