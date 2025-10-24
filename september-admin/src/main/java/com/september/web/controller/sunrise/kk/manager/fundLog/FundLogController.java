@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/kk/fund")
-@Api(tags = {"资金流水管理"})
+@Api(tags = {"后台资金流水管理"})
 public class FundLogController {
 
     @Resource
