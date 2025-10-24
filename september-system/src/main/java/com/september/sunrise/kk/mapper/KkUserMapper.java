@@ -41,4 +41,8 @@ public interface KkUserMapper {
     int updatePlaymateIncome(@Param("playmateId") Long playmateId,
                              @Param("income") BigDecimal income);
 
+    int existsByPhoneOrWechat(@Param("phone") String phone, @Param("wechat") String wechat);
+
+    int insertPlaymate(KkUser user);
+
 }

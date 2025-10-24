@@ -1,6 +1,7 @@
 package com.september.sunrise.kk.service;
 
 import com.september.sunrise.kk.domain.KkUser;
+import com.september.sunrise.kk.dto.PlaymateApplyDTO;
 
 import java.util.List;
 
@@ -45,4 +46,6 @@ public interface UserService {
      * 物理删除管理员（彻底删除）
      */
     void deleteManager(Long id);
+
+    void applyPlaymate(PlaymateApplyDTO dto);
 }

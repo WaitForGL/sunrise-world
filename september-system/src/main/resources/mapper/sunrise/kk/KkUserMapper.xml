@@ -106,4 +106,21 @@
 	</update>
 
 
+	<select id="existsByPhoneOrWechat" resultType="int">
+		SELECT COUNT(1) FROM kk_user
+		WHERE (phone = #{phone} OR wechat = #{wechat}) AND is_delete = 0
+	</select>
+
+	<insert id="insertPlaymate" parameterType="com.september.sunrise.kk.domain.KkUser">
+		INSERT INTO kk_user (
+			username, password, nickname, phone, wechat, gender,
+			intro, avatar, role_code, status, is_delete, create_time, update_time
+		) VALUES (
+					 #{username}, #{password}, #{nickname}, #{phone}, #{wechat}, #{gender},
+					 #{intro}, #{avatar}, #{roleCode}, #{status}, 0, NOW(), NOW()
+				 )
+	</insert>
+
+
+
 </mapper>

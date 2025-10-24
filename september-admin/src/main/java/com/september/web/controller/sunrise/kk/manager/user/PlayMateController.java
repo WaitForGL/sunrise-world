@@ -3,6 +3,7 @@ package com.september.web.controller.sunrise.kk.manager.user;
 
 import com.september.common.core.domain.AjaxResult;
 import com.september.sunrise.kk.domain.KkUser;
+import com.september.sunrise.kk.dto.PlaymateApplyDTO;
 import com.september.sunrise.kk.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,5 +28,15 @@ public class PlayMateController {
     public AjaxResult playmateList() {
         List<KkUser> playmates = userService.playmateList();
         return AjaxResult.success(playmates);
+    }
+
+    /**
+     * 陪玩入驻申请接口
+     */
+    @PostMapping("/apply")
+    @ApiOperation("陪玩申请入驻")
+    public AjaxResult applyPlaymate(@RequestBody PlaymateApplyDTO dto) {
+        userService.applyPlaymate(dto);
+        return AjaxResult.success("申请成功，请等待审核");
     }
 }
