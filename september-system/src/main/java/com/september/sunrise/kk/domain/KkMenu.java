@@ -1,22 +1,22 @@
 package com.september.sunrise.kk.domain;
 
 import lombok.Data;
+
 import java.util.List;
 
-/**
- * 菜单表（kk_menu）
- */
 @Data
 public class KkMenu {
     private Long id;
-    private String menuName;
-    private String menuCode;
+    private String name;
     private String path;
-    private String icon;
+    private String component;
+    private String perms;
     private Long parentId;
-    private Integer sort;
-    private Integer status;              // 1=启用 0=禁用
+    private Integer type;
+    private Integer orderNum;
+    private Integer visible;
+    private Integer status;
 
-    // 非数据库字段
+    // 子菜单
     private List<KkMenu> children;
 }

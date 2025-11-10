@@ -8,14 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface KkMenuMapper {
-
-    /**
-     * 根据角色查询菜单（陪玩可见）
-     */
-    List<KkMenu> findMenusByRoleCode(@Param("roleCode") String roleCode);
-
-    /**
-     * 查询全部菜单（管理员/老板可见）
-     */
-    List<KkMenu> findAllMenus();
+    List<KkMenu> selectMenusByRole(@Param("roleCode") String roleCode);
 }

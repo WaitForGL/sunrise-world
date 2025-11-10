@@ -2,47 +2,88 @@ package com.september.sunrise.kk.domain;
 
 
 import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * 用户表（kk_user）
  */
 @Data
+@ApiModel(value = "KkUser", description = "用户信息实体类（包括管理员、老板、客服、陪玩、顾客）")
 public class KkUser {
-    private Long id;                  // 用户ID / 陪玩ID
 
-    private String username;          // 登录用户名
-    private String password;          // 登录密码（MD5或加密）
-    private String nickname;          // 昵称
+    @ApiModelProperty(value = "用户ID / 陪玩ID", example = "1")
+    private Long id;
 
-    private String roleCode;          // 角色类型 ADMIN/BOSS/PLAYMATE
-    private String roleName;          // 角色名称（用于展示）
+    @ApiModelProperty(value = "登录用户名", example = "admin")
+    private String username;
 
-    private Integer status;           // 状态 1=启用 0=禁用 2=离职
-    private Date createTime;          // 创建/入职时间
-    private Date updateTime;          // 更新时间
+    @ApiModelProperty(value = "登录密码（明文存储）", example = "123456")
+    private String password;
 
-    // 逻辑删除字段
-    private Integer isDelete;         // 是否删除 0否 1是
+    @ApiModelProperty(value = "昵称", example = "管理员A")
+    private String nickname;
 
-    // 陪玩专属字段
-    private Integer gender;           // 性别 1男 2女
-    private String wechat;            // 微信号
-    private String phone;             // 手机号
-    private String alipayAccount;     // 支付宝账号
-    private String alipayName;        // 支付宝实名
-    private BigDecimal commissionRate; // 陪玩提成比例
-    private BigDecimal totalIncome;    // 累计收入
-    private BigDecimal withdrawnAmount;// 成功提现
-    private BigDecimal remainingAmount;// 剩余可提现（totalIncome - withdrawnAmount）
-    private Integer withdrawLock;      // 提现锁定 0否 1是
-    private String intro;              // 自我介绍
-    private String avatar;             // 头像/照片
-    private String remark;             // 备注
+    @ApiModelProperty(value = "角色类型（ADMIN/BOSS/MANAGER/PLAYMATE/CUSTOMERS）", example = "MANAGER")
+    private String roleCode;
 
-    // 管理员列表字段
-    private Integer dispatchCount;     // 派单量（关联 kk_order 统计）
+    @ApiModelProperty(value = "角色名称（管理员/老板/客服/陪玩/顾客）", example = "客服")
+    private String roleName;
+
+    @ApiModelProperty(value = "状态：1=启用 0=禁用 2=离职", example = "1")
+    private Integer status;
+
+    @ApiModelProperty(value = "创建/入职时间", example = "2025-11-10 12:00:00")
+    private Date createTime;
+
+    @ApiModelProperty(value = "更新时间", example = "2025-11-10 12:30:00")
+    private Date updateTime;
+
+    @ApiModelProperty(value = "是否删除：0=否 1=是", example = "0")
+    private Integer isDelete;
+
+    @ApiModelProperty(value = "性别：1=男 2=女", example = "1")
+    private Integer gender;
+
+    @ApiModelProperty(value = "微信号", example = "wx123456")
+    private String wechat;
+
+    @ApiModelProperty(value = "手机号", example = "13800000000")
+    private String phone;
+
+    @ApiModelProperty(value = "支付宝账号", example = "alipay@demo.com")
+    private String alipayAccount;
+
+    @ApiModelProperty(value = "支付宝实名", example = "张三")
+    private String alipayName;
+
+    @ApiModelProperty(value = "陪玩提成比例", example = "0.30")
+    private BigDecimal commissionRate;
+
+    @ApiModelProperty(value = "累计收入", example = "5000.00")
+    private BigDecimal totalIncome;
+
+    @ApiModelProperty(value = "成功提现金额", example = "3000.00")
+    private BigDecimal withdrawnAmount;
+
+    @ApiModelProperty(value = "剩余可提现金额", example = "2000.00")
+    private BigDecimal remainingAmount;
+
+    @ApiModelProperty(value = "提现锁定：0=否 1=是", example = "0")
+    private Integer withdrawLock;
+
+    @ApiModelProperty(value = "自我介绍", example = "你好，我是专业陪玩~")
+    private String intro;
+
+    @ApiModelProperty(value = "头像/照片", example = "https://cdn.xxx.com/avatar.jpg")
+    private String avatar;
+
+    @ApiModelProperty(value = "备注", example = "优秀员工")
+    private String remark;
+
+    @ApiModelProperty(value = "派单量（关联 kk_order 统计）", example = "35")
+    private Integer dispatchCount;
 }

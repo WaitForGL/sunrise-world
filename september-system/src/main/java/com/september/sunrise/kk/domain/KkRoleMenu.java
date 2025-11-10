@@ -7,6 +7,7 @@ import lombok.Data;
  */
 @Data
 public class KkRoleMenu {
-    private Long roleId;
-    private Long menuId;
+    private Long id;
+    private String roleCode; // 对应用户 roleCode
+    private Long menuId;     // 对应菜单ID
 }

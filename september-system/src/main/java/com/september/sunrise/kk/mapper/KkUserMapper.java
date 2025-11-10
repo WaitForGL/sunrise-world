@@ -1,48 +1,26 @@
 package com.september.sunrise.kk.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.september.sunrise.kk.domain.KkUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
-public interface KkUserMapper {
+public interface KkUserMapper extends BaseMapper<KkUser> {
+    //获取用户详情
+    KkUser selectByUsername(@Param("username") String username);
 
-    KkUser findByUsername(@Param("username") String username);
+    // 查询客服列表
+    List<KkUser> selectManagerList(@Param("status") Integer status);
 
-    List<KkUser> findAllAdminsWithDispatch();
+    // 新增客服
+    int insertManager(KkUser user);
 
-    List<KkUser> findAllPlaymates();
-
-    int insertAdmin(KkUser user);
-
-    int updateAdmin(KkUser user);
-
-    /**
-     * 逻辑删除管理员（标记删除）
-     */
-    int removeManager(@Param("id") Long id);
-
-    /**
-     * 物理删除管理员（彻底删除）
-     */
+    // 删除客服
     int deleteManager(@Param("id") Long id);
 
-    /**
-     * 关键字查询管理员
-     */
-    List<KkUser> findAdminsByKeyword(@Param("keyword") String keyword);
-
-    /**
-     * 更新增加陪玩余额
-     */
-    int updatePlaymateIncome(@Param("playmateId") Long playmateId,
-                             @Param("income") BigDecimal income);
-
-    int existsByPhoneOrWechat(@Param("phone") String phone, @Param("wechat") String wechat);
-
-    int insertPlaymate(KkUser user);
-
+    // 离职：状态改为2，同时角色改为顾客
+    int updateManagerStatus(@Param("id") Long id);
 }

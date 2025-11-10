@@ -5,23 +5,45 @@
 
 <mapper namespace="com.september.sunrise.kk.mapper.KkMenuMapper">
 
-	<!-- 查询陪玩可见菜单 -->
-	<select id="findMenusByRoleCode" parameterType="string" resultType="com.september.sunrise.kk.domain.KkMenu">
+	<!-- 基础字段映射 -->
+	<resultMap id="BaseResultMap" type="com.september.sunrise.kk.domain.KkMenu">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="path" column="path"/>
+		<result property="component" column="component"/>
+		<result property="perms" column="perms"/>
+		<result property="parentId" column="parent_id"/>
+		<result property="type" column="type"/>
+		<result property="orderNum" column="order_num"/>
+		<result property="visible" column="visible"/>
+		<result property="status" column="status"/>
+	</resultMap>
+
+	<!-- 根据角色查询菜单 -->
+	<select id="selectMenusByRole" resultMap="BaseResultMap" parameterType="string">
 		SELECT m.*
 		FROM kk_menu m
-				 INNER JOIN kk_role_menu rm ON rm.menu_id = m.id
-				 INNER JOIN kk_role r ON r.id = rm.role_id
-		WHERE r.role_code = #{roleCode}
+				 INNER JOIN kk_role_menu rm ON m.id = rm.menu_id
+		WHERE rm.role_code = #{roleCode}
 		  AND m.status = 1
-		ORDER BY m.sort ASC
+		ORDER BY m.order_num
 	</select>
 
-	<!-- 查询全部菜单（管理员/老板可见） -->
-	<select id="findAllMenus" resultType="com.september.sunrise.kk.domain.KkMenu">
+	<!-- 查询所有菜单（可选） -->
+	<select id="selectAllMenus" resultMap="BaseResultMap">
 		SELECT *
 		FROM kk_menu
 		WHERE status = 1
-		ORDER BY sort ASC
+		ORDER BY order_num
+	</select>
+
+	<!-- 根据父ID查询子菜单（可选） -->
+	<select id="selectMenusByParentId" resultMap="BaseResultMap" parameterType="long">
+		SELECT *
+		FROM kk_menu
+		WHERE parent_id = #{parentId}
+		  AND status = 1
+		ORDER BY order_num
 	</select>
 
 </mapper>

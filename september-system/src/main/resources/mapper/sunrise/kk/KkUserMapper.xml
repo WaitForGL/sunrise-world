@@ -5,122 +5,70 @@
 
 <mapper namespace="com.september.sunrise.kk.mapper.KkUserMapper">
 
-	<!-- 根据用户名查询 -->
-	<select id="findByUsername" resultType="com.september.sunrise.kk.domain.KkUser">
+	<resultMap id="BaseResultMap" type="com.september.sunrise.kk.domain.KkUser">
+		<id property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="nickname" column="nickname"/>
+		<result property="roleCode" column="role_code"/>
+		<result property="roleName" column="role_name"/>
+		<result property="status" column="status"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="isDelete" column="is_delete"/>
+		<result property="gender" column="gender"/>
+		<result property="wechat" column="wechat"/>
+		<result property="phone" column="phone"/>
+		<result property="alipayAccount" column="alipay_account"/>
+		<result property="alipayName" column="alipay_name"/>
+		<result property="commissionRate" column="commission_rate"/>
+		<result property="totalIncome" column="total_income"/>
+		<result property="withdrawnAmount" column="withdrawn_amount"/>
+		<result property="remainingAmount" column="remaining_amount"/>
+		<result property="withdrawLock" column="withdraw_lock"/>
+		<result property="intro" column="intro"/>
+		<result property="avatar" column="avatar"/>
+		<result property="remark" column="remark"/>
+		<result property="dispatchCount" column="dispatch_count"/>
+	</resultMap>
+
+	<select id="selectByUsername" resultMap="BaseResultMap" parameterType="string">
 		SELECT *
 		FROM kk_user
-		WHERE username = #{username} LIMIT 1
+		WHERE username = #{username}
+			LIMIT 1
 	</select>
 
-	<!-- 查询管理员列表（部分字段 + 派单量） -->
-	<select id="findAllAdminsWithDispatch" resultType="com.september.sunrise.kk.domain.KkUser">
-		SELECT u.id, u.nickname, u.status, r.role_name AS roleName,
-			   IFNULL(o.dispatch_count,0) AS dispatchCount
-		FROM kk_user u
-				 INNER JOIN kk_user_role ur ON ur.user_id = u.id
-				 INNER JOIN kk_role r ON r.id = ur.role_id
-				 LEFT JOIN (
-			SELECT customer_service_id, COUNT(*) AS dispatch_count
-			FROM kk_order
-			GROUP BY customer_service_id
-		) o ON o.customer_service_id = u.id
-		WHERE r.role_code IN ('ADMIN','BOSS')
-		  AND u.is_delete = 0
-		ORDER BY u.create_time DESC
+	<!-- 客服列表 -->
+	<select id="selectManagerList" resultMap="BaseResultMap" parameterType="int">
+		SELECT id, nickname, status, username, role_name, dispatch_count
+		FROM kk_user
+		WHERE role_code = 'MANAGER'
+		<if test="status != null">
+			AND status = #{status}
+		</if>
+		ORDER BY id DESC
 	</select>
 
-	<!-- 查询陪玩列表 -->
-	<select id="findAllPlaymates" resultType="com.september.sunrise.kk.domain.KkUser">
-		SELECT u.id, u.create_time AS createTime, u.nickname, u.gender, u.status,
-			   u.wechat, u.phone, u.alipay_account, u.alipay_name,
-			   u.commission_rate, u.total_income, u.withdrawn_amount,
-			   (u.total_income - u.withdrawn_amount) AS remaining_amount,
-			   u.withdraw_lock, u.intro, u.avatar, u.remark
-		FROM kk_user u
-				 INNER JOIN kk_user_role ur ON ur.user_id = u.id
-				 INNER JOIN kk_role r ON r.id = ur.role_id
-		WHERE r.role_code = 'PLAYMATE'
-		  AND u.is_delete = 0
-		ORDER BY u.create_time DESC
-	</select>
-
-	<!-- 新增管理员 -->
-	<insert id="insertAdmin" parameterType="com.september.sunrise.kk.domain.KkUser">
-		INSERT INTO kk_user (username, password, nickname, status, role_code, create_time, update_time, is_delete)
-		VALUES (#{username}, #{password}, #{nickname}, #{status}, 'ADMIN', NOW(), NOW(), 0)
+	<!-- 新增客服 -->
+	<insert id="insertManager" parameterType="com.september.sunrise.kk.domain.KkUser" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO kk_user(username, password, nickname, role_code, role_name, status, create_time, update_time)
+		VALUES(#{username}, #{password}, #{nickname}, 'MANAGER', '客服', 1, NOW(), NOW())
 	</insert>
 
-	<!-- 编辑管理员 -->
-	<update id="updateAdmin" parameterType="com.september.sunrise.kk.domain.KkUser">
-		UPDATE kk_user
-		SET
-		nickname = #{nickname},
-		status = #{status},
-		<if test="password != null and password != ''">
-			password = #{password},
-		</if>
-		update_time = NOW()
-		WHERE id = #{id} AND role_code = 'ADMIN' AND is_delete = 0
-	</update>
-
-	<!-- 逻辑删除管理员 -->
-	<update id="removeManager" parameterType="long">
-		UPDATE kk_user
-		SET is_delete = 1, update_time = NOW()
-		WHERE id = #{id} AND role_code = 'ADMIN' AND is_delete = 0
-	</update>
-
-	<!-- 物理删除管理员 -->
+	<!-- 删除客服 -->
 	<delete id="deleteManager" parameterType="long">
-		DELETE FROM kk_user
-		WHERE id = #{id} AND role_code = 'ADMIN'
+		DELETE FROM kk_user WHERE id = #{id} AND role_code = 'MANAGER'
 	</delete>
 
-
-	<!-- 条件查询管理员 -->
-	<select id="findAdminsByKeyword" resultType="com.september.sunrise.kk.domain.KkUser">
-		SELECT u.id, u.nickname, u.status, r.role_name AS roleName,
-		IFNULL(o.dispatch_count,0) AS dispatchCount
-		FROM kk_user u
-		INNER JOIN kk_user_role ur ON ur.user_id = u.id
-		INNER JOIN kk_role r ON r.id = ur.role_id
-		LEFT JOIN (
-		SELECT customer_service_id, COUNT(*) AS dispatch_count
-		FROM kk_order
-		GROUP BY customer_service_id
-		) o ON o.customer_service_id = u.id
-		WHERE r.role_code IN ('ADMIN','BOSS')
-		AND u.is_delete = 0
-		<if test="keyword != null and keyword != ''">
-			AND (u.username LIKE CONCAT('%', #{keyword}, '%') OR u.nickname LIKE CONCAT('%', #{keyword}, '%'))
-		</if>
-		ORDER BY u.create_time DESC
-	</select>
-
-	<!-- 更新增加陪玩余额 -->
-	<update id="updatePlaymateIncome">
+	<!-- 离职 -->
+	<update id="updateManagerStatus" parameterType="long">
 		UPDATE kk_user
-		SET total_income = total_income + #{income},
-			remaining_amount = remaining_amount + #{income}
-		WHERE id = #{playmateId} AND role_code = 'PLAYMATE'
+		SET status = 2,
+			role_code = 'CUSTOMERS',
+			role_name = '顾客',
+			update_time = NOW()
+		WHERE id = #{id} AND role_code = 'MANAGER'
 	</update>
-
-
-	<select id="existsByPhoneOrWechat" resultType="int">
-		SELECT COUNT(1) FROM kk_user
-		WHERE (phone = #{phone} OR wechat = #{wechat}) AND is_delete = 0
-	</select>
-
-	<insert id="insertPlaymate" parameterType="com.september.sunrise.kk.domain.KkUser">
-		INSERT INTO kk_user (
-			username, password, nickname, phone, wechat, gender,
-			intro, avatar, role_code, status, is_delete, create_time, update_time
-		) VALUES (
-					 #{username}, #{password}, #{nickname}, #{phone}, #{wechat}, #{gender},
-					 #{intro}, #{avatar}, #{roleCode}, #{status}, 0, NOW(), NOW()
-				 )
-	</insert>
-
-
 
 </mapper>

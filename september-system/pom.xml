@@ -16,6 +16,12 @@
     </description>
 
     <dependencies>
+        <!-- Swagger 2 注解支持包 -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.6.11</version>
+        </dependency>
 
         <!-- 通用工具-->
         <dependency>

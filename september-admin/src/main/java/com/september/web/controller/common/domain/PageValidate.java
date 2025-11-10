@@ -4,8 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -14,19 +14,14 @@ public class PageValidate implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    // 当前分页
-    @DecimalMin(value = "1", message = "pageNo参数必须大于0的数字")
-    public Integer pageNo = 1;
+    @NotNull(message = "页码不能为空")
+    @Min(value = 1, message = "页码最小为 1")
+    @ApiModelProperty(value = "页码", example = "1", required = true)
+    private Integer pageNo;
 
-    // 每页条数
-    @DecimalMin(value = "1", message = "pageSize参数必须是大于0的数字")
-    @DecimalMax(value = "1000", message = "pageSize参数必须是小于1000的数字")
-    private Integer pageSize = 20;
-
-    @ApiModelProperty(value = "开始时间")
-    private String startTime;
-
-    @ApiModelProperty(value = "结束时间")
-    private String endTime;
+    @NotNull(message = "每页数量不能为空")
+    @Min(value = 10, message = "每页最少 1 条")
+    @ApiModelProperty(value = "每页数量", example = "10", required = true)
+    private Integer pageSize;
 
 }
