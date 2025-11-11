@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.september.sunrise.kk.domain.KkUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface KkUserMapper extends BaseMapper<KkUser> {
 
     // 离职：状态改为2，同时角色改为顾客
     int updateManagerStatus(@Param("id") Long id);
+
+    int updateUserVip(KkUser user);
+
 }

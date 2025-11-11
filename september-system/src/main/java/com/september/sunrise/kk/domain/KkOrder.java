@@ -1,44 +1,91 @@
 package com.september.sunrise.kk.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 订单表
+ * 订单表（kk_order）
  */
 @Data
+@ApiModel(value = "KkOrder", description = "订单实体")
 public class KkOrder {
 
-    private Long id;                  // 主键ID
-    private String orderNo;           // 订单编号
-    private Date orderTime;           // 订单时间
+    @ApiModelProperty("订单ID")
+    private Long id;
 
-    private Long customerId;   // 顾客ID，对应kk_customer.id
-    private Long playmateId;   // 陪玩ID，对应kk_user.id
+    @ApiModelProperty("订单编号")
+    private String orderNo;
 
+    @ApiModelProperty("订单日期")
+    private Date orderDate;
 
-    private Long customerServiceId;   // 客服ID
-    private String bossAccount;       // 老板账户
-    private String playmateName;      // 陪玩名称
-    private String category;          // 品类
+    @ApiModelProperty("处理客服ID")
+    private Long managerId;
 
-    private BigDecimal unitPrice;     // 单价
-    private Integer quantity;         // 时长/局数
-    private BigDecimal commissionRate; // 陪玩提成比例
-    private BigDecimal discountRate;   // 折扣比例
-    private BigDecimal totalAfterDiscount; // 折后总计
-    private BigDecimal orderTotal;        // 订单总计
-    private BigDecimal storeIncome;       // 店内收入
-    private BigDecimal playmateIncome;    // 陪玩收入
+    @ApiModelProperty("处理客服昵称")
+    private String managerName;
 
-    private Integer orderStatus;       // 订单状态 1=待完成 2=已完成 3=已取消
-    private Integer reportConfirmStatus; // 报单确认状态 0=未确认 1=已确认
+    @ApiModelProperty("顾客ID")
+    private Long customerId;
 
-    private String remark;             // 备注
-    private Date createTime;           // 创建时间
-    private Date updateTime;           // 更新时间
-    // 逻辑删除字段
-    private Integer isDelete;         // 是否删除 0否 1是
+    @ApiModelProperty("顾客昵称")
+    private String customerName;
+
+    @ApiModelProperty("陪玩ID")
+    private Long playmateId;
+
+    @ApiModelProperty("陪玩昵称")
+    private String playmateName;
+
+    @ApiModelProperty("游戏品类")
+    private String gameCategory;
+
+    @ApiModelProperty("单价（每小时或每局）")
+    private BigDecimal unitPrice;
+
+    @ApiModelProperty("时长/局数")
+    private Integer quantity;
+
+    @ApiModelProperty("陪玩提成比例（百分比）")
+    private BigDecimal commissionRate;
+
+    @ApiModelProperty("折扣比例（老板折扣）")
+    private BigDecimal discountRate;
+
+    @ApiModelProperty("订单总计（unitPrice * quantity）")
+    private BigDecimal totalAmount;
+
+    @ApiModelProperty("折后总计（totalAmount * discountRate）")
+    private BigDecimal discountedAmount;
+
+    @ApiModelProperty("陪玩收入（discountedAmount * commissionRate）")
+    private BigDecimal playmateIncome;
+
+    @ApiModelProperty("店内收入（discountedAmount - playmateIncome）")
+    private BigDecimal storeIncome;
+
+    @ApiModelProperty("订单状态（0待处理 1已完成 2已取消）")
+    private Integer status;
+
+    @ApiModelProperty("订单截图URL")
+    private String screenshot;
+
+    @ApiModelProperty("附件路径")
+    private String attachment;
+
+    @ApiModelProperty("备注")
+    private String remark;
+
+    @ApiModelProperty("创建时间")
+    private Date createTime;
+
+    @ApiModelProperty("更新时间")
+    private Date updateTime;
+
+    @ApiModelProperty("逻辑删除 0=否 1=是")
+    private Integer isDelete;
 }

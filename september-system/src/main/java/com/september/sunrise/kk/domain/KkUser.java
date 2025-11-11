@@ -86,4 +86,13 @@ public class KkUser {
 
     @ApiModelProperty(value = "派单量（关联 kk_order 统计）", example = "35")
     private Integer dispatchCount;
+
+    @ApiModelProperty("VIP等级")
+    private Integer vipLevel;
+
+    @ApiModelProperty("VIP名称")
+    private String vipName;
+
+    @ApiModelProperty("累计充值金额")
+    private BigDecimal totalRecharge;
 }
