@@ -42,7 +42,7 @@ public class VipConfigController {
 
     @ApiOperation("删除VIP配置")
     @PostMapping("/delete")
-    public AjaxResult delete(@RequestParam Long id) {
+    public AjaxResult delete(@RequestBody Long id) {
         vipConfigService.removeById(id);
         return AjaxResult.success("删除成功");
     }

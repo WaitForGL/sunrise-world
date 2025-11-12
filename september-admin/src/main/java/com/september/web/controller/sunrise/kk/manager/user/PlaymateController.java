@@ -57,14 +57,14 @@ public class PlaymateController {
 
     @PostMapping("/delete")
     @ApiOperation("删除陪玩")
-    public AjaxResult delete(@RequestParam Long id) {
+    public AjaxResult delete(@RequestBody Long id) {
         playmateService.deletePlaymate(id);
         return AjaxResult.success("删除陪玩成功");
     }
 
     @PostMapping("/leave")
     @ApiOperation("陪玩离职")
-    public AjaxResult leave(@RequestParam Long id) {
+    public AjaxResult leave(@RequestBody Long id) {
         playmateService.leavePlaymate(id);
         return AjaxResult.success("陪玩已离职");
     }

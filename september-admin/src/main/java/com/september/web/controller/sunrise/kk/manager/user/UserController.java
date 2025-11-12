@@ -1,5 +1,6 @@
 package com.september.web.controller.sunrise.kk.manager.user;
 
+import com.september.common.core.domain.AjaxResult;
 import com.september.sunrise.kk.domain.KkMenu;
 import com.september.sunrise.kk.domain.KkUser;
 import com.september.sunrise.kk.security.JwtTokenUtil;
@@ -31,7 +32,7 @@ public class UserController {
 
     @ApiOperation("获取当前登录用户详情和菜单")
     @GetMapping("/info")
-    public Map<String, Object> getUserInfo(HttpServletRequest request) {
+    public AjaxResult getUserInfo(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             throw new RuntimeException("未登录或Token缺失");
@@ -51,6 +52,6 @@ public class UserController {
         Map<String, Object> result = new HashMap<>();
         result.put("user", user);
         result.put("menus", menus);
-        return result;
+        return AjaxResult.success("用户信息返回",result);
     }
 }

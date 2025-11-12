@@ -9,6 +9,8 @@ import com.september.sunrise.kk.service.OrderService;
 import com.september.web.controller.common.domain.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +40,7 @@ public class OrderController {
         return AjaxResult.success(pageResult);
     }
 
+
     @PostMapping("/add")
     @ApiOperation("新增订单")
     public AjaxResult add(@RequestBody KkOrder order) {
@@ -54,7 +57,7 @@ public class OrderController {
 
     @PostMapping("/delete")
     @ApiOperation("删除订单（逻辑删除）")
-    public AjaxResult delete(@RequestParam Long id) {
+    public AjaxResult delete(@RequestBody Long id) {
         orderService.deleteOrder(id);
         return AjaxResult.success("删除订单成功");
     }

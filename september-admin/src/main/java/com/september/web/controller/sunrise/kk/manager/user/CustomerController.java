@@ -59,7 +59,7 @@ public class CustomerController {
 
     @PostMapping("/delete")
     @ApiOperation("删除顾客")
-    public AjaxResult delete(@RequestParam Long id) {
+    public AjaxResult delete(@RequestBody Long id) {
         customerService.deleteCustomer(id);
         return AjaxResult.success("删除顾客成功");
     }

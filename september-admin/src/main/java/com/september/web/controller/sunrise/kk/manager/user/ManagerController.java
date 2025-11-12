@@ -60,7 +60,7 @@ public class ManagerController {
      */
     @GetMapping("/delete")
     @ApiOperation("删除客服")
-    public AjaxResult delete(@RequestParam Long id) {
+    public AjaxResult delete(@RequestBody Long id) {
         managerService.deleteManager(id);
         return AjaxResult.success("删除成功");
     }
@@ -70,7 +70,7 @@ public class ManagerController {
      */
     @PostMapping("/leave")
     @ApiOperation("客服离职（状态改为离职，角色改为顾客）")
-    public AjaxResult leave(@RequestParam Long id) {
+    public AjaxResult leave(@RequestBody Long id) {
         managerService.leaveManager(id);
         return AjaxResult.success("离职成功");
     }
