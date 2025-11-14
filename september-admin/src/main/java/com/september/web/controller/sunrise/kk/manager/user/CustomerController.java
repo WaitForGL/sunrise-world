@@ -1,4 +1,4 @@
-package com.september.web.controller.sunrise.kk.customer;
+package com.september.web.controller.sunrise.kk.manager.user;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -59,8 +59,8 @@ public class CustomerController {
 
     @PostMapping("/delete")
     @ApiOperation("删除顾客")
-    public AjaxResult delete(@RequestBody Long id) {
-        customerService.deleteCustomer(id);
+    public AjaxResult delete(@RequestBody KkUser customer) {
+        customerService.deleteCustomer(customer.getId());
         return AjaxResult.success("删除顾客成功");
     }
 }

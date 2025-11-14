@@ -57,15 +57,15 @@ public class PlaymateController {
 
     @PostMapping("/delete")
     @ApiOperation("删除陪玩")
-    public AjaxResult delete(@RequestBody Long id) {
-        playmateService.deletePlaymate(id);
+    public AjaxResult delete(@RequestBody KkUser playmate) {
+        playmateService.deletePlaymate(playmate.getId());
         return AjaxResult.success("删除陪玩成功");
     }
 
     @PostMapping("/leave")
     @ApiOperation("陪玩离职")
-    public AjaxResult leave(@RequestBody Long id) {
-        playmateService.leavePlaymate(id);
+    public AjaxResult leave(@RequestBody KkUser playmate) {
+        playmateService.leavePlaymate(playmate.getId());
         return AjaxResult.success("陪玩已离职");
     }
 }

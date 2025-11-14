@@ -1,5 +1,7 @@
 package com.september.sunrise.kk.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,6 +12,7 @@ import java.util.Date;
 @ApiModel("充值记录")
 public class KkRechargeLog {
 
+    @TableId(type = IdType.AUTO)
     @ApiModelProperty("主键ID")
     private Long id;
 

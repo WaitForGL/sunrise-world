@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.september.sunrise.kk.mapper.CustomerIndexMapper">
+
+	<!-- 顾客数量 -->
+	<select id="countCustomers" resultType="java.lang.Long">
+		SELECT COUNT(*)
+		FROM kk_user
+		WHERE is_delete = 0
+		AND role_code = 'CUSTOMERS'
+	</select>
+
+	<!-- 总充值金额 -->
+	<select id="sumRechargeAmount" resultType="java.math.BigDecimal">
+		SELECT COALESCE(SUM(amount), 0)
+		FROM recharge_log
+		WHERE 1 = 1
+		<if test="params.startDate != null">
+			AND create_time &gt;= #{params.startDate}
+		</if>
+		<if test="params.endDate != null">
+			AND create_time &lt;= #{params.endDate}
+		</if>
+		<if test="params.rechargeStatus != null">
+			AND status = #{params.rechargeStatus}
+		</if>
+	</select>
+
+	<!-- 总消费金额 -->
+	<select id="sumConsumeAmount" resultType="java.math.BigDecimal">
+		SELECT COALESCE(SUM(discount_total), 0)
+		FROM kk_order
+		WHERE is_delete = 0
+		<if test="params.orderStatus != null">
+			AND order_status = #{params.orderStatus}
+		</if>
+		<if test="params.startDate != null">
+			AND create_time &gt;= #{params.startDate}
+		</if>
+		<if test="params.endDate != null">
+			AND create_time &lt;= #{params.endDate}
+		</if>
+	</select>
+
+	<!-- 顾客余额汇总 -->
+	<select id="sumCustomerBalance" resultType="java.math.BigDecimal">
+		SELECT COALESCE(SUM(balance), 0)
+		FROM kk_user
+		WHERE is_delete = 0
+		AND role_code = 'CUSTOMERS'
+	</select>
+
+</mapper>

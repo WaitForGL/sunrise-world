@@ -57,8 +57,8 @@ public class OrderController {
 
     @PostMapping("/delete")
     @ApiOperation("删除订单（逻辑删除）")
-    public AjaxResult delete(@RequestBody Long id) {
-        orderService.deleteOrder(id);
+    public AjaxResult delete(@RequestBody KkOrder order) {
+        orderService.deleteOrder(order.getId());
         return AjaxResult.success("删除订单成功");
     }
 }

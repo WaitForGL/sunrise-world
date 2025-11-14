@@ -56,12 +56,12 @@ public class ManagerController {
     }
 
     /**
-     * 删除客服（GET 方式）
+     * 删除客服
      */
-    @GetMapping("/delete")
+    @PostMapping("/delete")
     @ApiOperation("删除客服")
-    public AjaxResult delete(@RequestBody Long id) {
-        managerService.deleteManager(id);
+    public AjaxResult delete(@RequestBody KkUser user) {
+        managerService.deleteManager(user.getId());
         return AjaxResult.success("删除成功");
     }
 
@@ -70,8 +70,8 @@ public class ManagerController {
      */
     @PostMapping("/leave")
     @ApiOperation("客服离职（状态改为离职，角色改为顾客）")
-    public AjaxResult leave(@RequestBody Long id) {
-        managerService.leaveManager(id);
+    public AjaxResult leave(@RequestBody KkUser user) {
+        managerService.leaveManager(user.getId());
         return AjaxResult.success("离职成功");
     }
 }

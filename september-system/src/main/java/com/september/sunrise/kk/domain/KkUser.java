@@ -1,6 +1,8 @@
 package com.september.sunrise.kk.domain;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,6 +17,7 @@ import java.util.Date;
 @ApiModel(value = "KkUser", description = "用户信息实体类（包括管理员、老板、客服、陪玩、顾客）")
 public class KkUser {
 
+    @TableId(type = IdType.AUTO)
     @ApiModelProperty(value = "用户ID / 陪玩ID", example = "1")
     private Long id;
 
