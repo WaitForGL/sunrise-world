@@ -2,40 +2,56 @@ package com.september.sunrise.kk.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.september.sunrise.kk.domain.KkOrder;
-import com.september.sunrise.kk.dto.OrderQueryDto;
+import com.september.sunrise.kk.domain.KkPlaymateGame;
 import com.september.sunrise.kk.mapper.KkOrderMapper;
+import com.september.sunrise.kk.mapper.KkPlaymateGameMapper;
 import com.september.sunrise.kk.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
-    private KkOrderMapper kkOrderMapper;
+    private final KkOrderMapper orderMapper;
+    private final KkPlaymateGameMapper playmateGameMapper;
 
     @Override
-    public List<KkOrder> getOrderList(OrderQueryDto queryDto) {
-        LambdaQueryWrapper<KkOrder> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(queryDto.getStatus() != null, KkOrder::getStatus, queryDto.getStatus());
-        wrapper.like(queryDto.getCustomerName() != null && !queryDto.getCustomerName().isEmpty(), KkOrder::getCustomerName, queryDto.getCustomerName());
-        wrapper.like(queryDto.getPlaymateName() != null && !queryDto.getPlaymateName().isEmpty(), KkOrder::getPlaymateName, queryDto.getPlaymateName());
-        wrapper.like(queryDto.getManagerName() != null && !queryDto.getManagerName().isEmpty(), KkOrder::getManagerName, queryDto.getManagerName());
-        wrapper.eq(queryDto.getGameCategory() != null, KkOrder::getGameCategory, queryDto.getGameCategory());
-        wrapper.ge(queryDto.getStartDate() != null, KkOrder::getOrderDate, queryDto.getStartDate());
-        wrapper.le(queryDto.getEndDate() != null, KkOrder::getOrderDate, queryDto.getEndDate());
-        wrapper.eq(KkOrder::getIsDelete, 0);
-        wrapper.orderByDesc(KkOrder::getOrderDate);
-        return kkOrderMapper.selectList(wrapper);
-    }
+    public void placeOrder(KkOrder order) {
+        if (order.getPlaymateId() == null) {
+            // 自动派单
+            List<KkPlaymateGame> candidates = playmateGameMapper.listByGameAndLevel(order.getGameId(), order.getPlaymateLevelId());
+            KkPlaymateGame playmateGame = candidates.stream()
+                    .filter(g -> g.getStatus() != null && g.getStatus() == 1)
+                    .findFirst()
+                    .orElse(null);
 
-    @Override
-    public void addOrder(KkOrder order) {
-        // 自动计算金额逻辑
-        BigDecimal total = order.getUnitPrice().multiply(BigDecimal.valueOf(order.getQuantity()));
+            if (playmateGame == null) throw new RuntimeException("没有可用陪玩");
+
+            order.setPlaymateId(playmateGame.getPlaymateId());
+            order.setPlaymateName(playmateGame.getPlaymateName());
+            order.setUnitPrice(playmateGame.getPrice());
+            order.setCommissionRate(playmateGame.getCommissionRate());
+            order.setPlaymateLevelId(playmateGame.getLevelId());
+            order.setPlaymateLevelName(playmateGame.getLevelName());
+        } else {
+            // 指定陪玩
+            KkPlaymateGame playmateGame = playmateGameMapper.getByPlaymateAndGame(order.getPlaymateId(), order.getGameId());
+            if (playmateGame == null || playmateGame.getStatus() != 1)
+                throw new RuntimeException("指定陪玩不可用或接单中");
+            order.setUnitPrice(playmateGame.getPrice());
+            order.setCommissionRate(playmateGame.getCommissionRate());
+            order.setPlaymateLevelId(playmateGame.getLevelId());
+            order.setPlaymateLevelName(playmateGame.getLevelName());
+            order.setPlaymateName(playmateGame.getPlaymateName());
+        }
+
+        // 计算金额
+        BigDecimal total = order.getUnitPrice().multiply(BigDecimal.valueOf(order.getCount()));
         BigDecimal discounted = total.multiply(order.getDiscountRate());
         BigDecimal playmateIncome = discounted.multiply(order.getCommissionRate());
         BigDecimal storeIncome = discounted.subtract(playmateIncome);
@@ -44,13 +60,33 @@ public class OrderServiceImpl implements OrderService {
         order.setDiscountedAmount(discounted);
         order.setPlaymateIncome(playmateIncome);
         order.setStoreIncome(storeIncome);
+        order.setOrderNo("ORD" + System.currentTimeMillis());
+        order.setOrderTime(LocalDateTime.now());
+        order.setIsDelete(0);
 
-        kkOrderMapper.insert(order);
+        orderMapper.insert(order);
+    }
+
+    @Override
+    public List<KkOrder> listOrdersByUser(Long userId) {
+        LambdaQueryWrapper<KkOrder> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(KkOrder::getCustomerId, userId)
+                .eq(KkOrder::getIsDelete, 0)
+                .orderByDesc(KkOrder::getOrderTime);
+        return orderMapper.selectList(wrapper);
+    }
+
+    @Override
+    public List<KkOrder> listOrders() {
+        LambdaQueryWrapper<KkOrder> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(KkOrder::getIsDelete, 0)
+                .orderByDesc(KkOrder::getOrderTime);
+        return orderMapper.selectList(wrapper);
     }
 
     @Override
     public void updateOrder(KkOrder order) {
-        kkOrderMapper.updateById(order);
+        orderMapper.updateById(order);
     }
 
     @Override
@@ -58,6 +94,6 @@ public class OrderServiceImpl implements OrderService {
         KkOrder order = new KkOrder();
         order.setId(id);
         order.setIsDelete(1);
-        kkOrderMapper.updateById(order);
+        orderMapper.updateById(order);
     }
 }

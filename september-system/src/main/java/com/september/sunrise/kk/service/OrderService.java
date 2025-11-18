@@ -1,15 +1,16 @@
 package com.september.sunrise.kk.service;
 
 import com.september.sunrise.kk.domain.KkOrder;
-import com.september.sunrise.kk.dto.OrderQueryDto;
 
 import java.util.List;
 
 public interface OrderService {
 
-    List<KkOrder> getOrderList(OrderQueryDto queryDto);
+    void placeOrder(KkOrder order);
 
-    void addOrder(KkOrder order);
+    List<KkOrder> listOrdersByUser(Long userId);
+
+    List<KkOrder> listOrders();
 
     void updateOrder(KkOrder order);
 

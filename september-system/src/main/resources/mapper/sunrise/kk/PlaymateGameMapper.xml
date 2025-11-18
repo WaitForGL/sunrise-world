@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.september.sunrise.kk.mapper.KkPlaymateGameMapper">
+
+
+	<!-- 自动派单：根据游戏ID和陪玩等级ID获取可用陪玩列表 -->
+	<select id="listByGameAndLevel" resultType="com.september.sunrise.kk.domain.KkPlaymateGame">
+		SELECT *
+		FROM kk_playmate_game
+		WHERE game_id = #{gameId}
+		  AND level_id = #{levelId}
+		  AND status = 1
+		ORDER BY id
+	</select>
+
+
+	<!-- 查询陪玩支持的游戏及价格 -->
+	<select id="listByPlaymate" resultType="com.september.sunrise.kk.domain.KkPlaymateGame">
+		SELECT *
+		FROM kk_playmate_game
+		WHERE playmate_id = #{playmateId}
+		  AND status = 1
+		ORDER BY id
+	</select>
+
+	<!-- 指定陪玩查询 -->
+	<select id="getByPlaymateAndGame" resultType="com.september.sunrise.kk.domain.KkPlaymateGame">
+		SELECT *
+		FROM kk_playmate_game
+		WHERE playmate_id = #{playmateId}
+		  AND game_id = #{gameId}
+		  AND status = 1
+			LIMIT 1
+	</select>
+
+	<!-- 自动派单查询 -->
+	<select id="getAvailablePlaymate" resultType="com.september.sunrise.kk.domain.KkPlaymateGame">
+		SELECT *
+		FROM kk_playmate_game
+		WHERE game_id = #{gameId}
+		  AND level_id = #{levelId}
+		  AND status = 1
+		ORDER BY id
+			LIMIT 1
+	</select>
+
+</mapper>
