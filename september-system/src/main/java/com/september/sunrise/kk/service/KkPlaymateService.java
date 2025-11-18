@@ -5,7 +5,7 @@ import com.september.sunrise.kk.dto.PlaymateQueryDto;
 
 import java.util.List;
 
-public interface PlaymateService {
+public interface KkPlaymateService {
 
     /**
      * 获取陪玩列表（分页 + 条件筛选）

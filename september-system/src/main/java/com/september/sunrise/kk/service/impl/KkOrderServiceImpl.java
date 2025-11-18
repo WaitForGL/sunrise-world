@@ -5,7 +5,7 @@ import com.september.sunrise.kk.domain.KkOrder;
 import com.september.sunrise.kk.domain.KkPlaymateGame;
 import com.september.sunrise.kk.mapper.KkOrderMapper;
 import com.september.sunrise.kk.mapper.KkPlaymateGameMapper;
-import com.september.sunrise.kk.service.OrderService;
+import com.september.sunrise.kk.service.KkOrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class OrderServiceImpl implements OrderService {
+public class KkOrderServiceImpl implements KkOrderService {
 
     private final KkOrderMapper orderMapper;
     private final KkPlaymateGameMapper playmateGameMapper;

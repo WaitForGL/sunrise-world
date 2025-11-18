@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Data
 @ApiModel("顾客工作台统计结果")
-public class CustomerIndexVO {
+public class KkCustomerIndexVO {
 
     @ApiModelProperty("顾客总数量")
     private Long customerCount;

@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.september.common.core.domain.AjaxResult;
 import com.september.sunrise.kk.domain.KkUser;
 import com.september.sunrise.kk.dto.PlaymateQueryDto;
-import com.september.sunrise.kk.service.PlaymateService;
+import com.september.sunrise.kk.service.KkPlaymateService;
 import com.september.web.controller.common.domain.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PlaymateController {
 
-    private final PlaymateService playmateService;
+    private final KkPlaymateService playmateService;
 
     @GetMapping("/list")
     @ApiOperation("获取陪玩列表，可按条件筛选")

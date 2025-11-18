@@ -5,9 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.september.common.core.domain.AjaxResult;
 import com.september.sunrise.kk.domain.KkUser;
 import com.september.sunrise.kk.dto.ManagerQueryDto;
-import com.september.sunrise.kk.service.ManagerService;
+import com.september.sunrise.kk.service.KkManagerService;
 import com.september.web.controller.common.domain.PageResult;
-import com.september.web.controller.common.domain.PageValidate;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
@@ -22,7 +21,7 @@ import java.util.List;
 public class ManagerController {
 
     @Resource
-    private ManagerService managerService;
+    private KkManagerService managerService;
 
     /**
      * 获取客服列表（可按状态筛选）

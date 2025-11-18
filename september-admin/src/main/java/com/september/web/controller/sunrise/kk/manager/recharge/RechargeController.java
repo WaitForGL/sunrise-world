@@ -2,7 +2,7 @@ package com.september.web.controller.sunrise.kk.manager.recharge;
 
 import com.september.common.core.domain.AjaxResult;
 import com.september.sunrise.kk.dto.RechargeDto;
-import com.september.sunrise.kk.service.RechargeService;
+import com.september.sunrise.kk.service.KkRechargeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 @Api(tags = "充值管理")
 @RestController
@@ -20,7 +19,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RechargeController {
 
-    private final RechargeService rechargeService;
+    private final KkRechargeService rechargeService;
 
     @PostMapping("/add")
     @ApiOperation("用户充值并自动升级VIP")

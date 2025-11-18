@@ -1,7 +1,7 @@
 package com.september.sunrise.kk.service.impl;
 
 import com.september.sunrise.kk.dto.HomeIndexDto;
-import com.september.sunrise.kk.service.HomeIndexService;
+import com.september.sunrise.kk.service.KkHomeIndexService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @Service
 @RequiredArgsConstructor
-public class HomeIndexServiceImpl implements HomeIndexService {
+public class KkHomeIndexServiceImpl implements KkHomeIndexService {
 
     @Override
     public HomeIndexDto getHomeIndex() {

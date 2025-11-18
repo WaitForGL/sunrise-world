@@ -2,7 +2,7 @@ package com.september.web.controller.sunrise.kk.manager.order;
 
 import com.september.common.core.domain.AjaxResult;
 import com.september.sunrise.kk.domain.KkOrder;
-import com.september.sunrise.kk.service.OrderService;
+import com.september.sunrise.kk.service.KkOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final OrderService orderService;
+    private final KkOrderService orderService;
 
     @GetMapping("/list")
     @ApiOperation("获取后台订单列表")

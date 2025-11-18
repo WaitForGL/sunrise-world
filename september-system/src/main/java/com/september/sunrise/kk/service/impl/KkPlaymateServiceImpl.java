@@ -4,14 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.september.sunrise.kk.domain.KkUser;
 import com.september.sunrise.kk.dto.PlaymateQueryDto;
 import com.september.sunrise.kk.mapper.KkUserMapper;
-import com.september.sunrise.kk.service.PlaymateService;
+import com.september.sunrise.kk.service.KkPlaymateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PlaymateServiceImpl implements PlaymateService {
+public class KkPlaymateServiceImpl implements KkPlaymateService {
 
     @Autowired
     private KkUserMapper kkUserMapper;

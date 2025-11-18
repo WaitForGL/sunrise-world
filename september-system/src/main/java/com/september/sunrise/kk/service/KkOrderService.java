@@ -4,7 +4,7 @@ import com.september.sunrise.kk.domain.KkOrder;
 
 import java.util.List;
 
-public interface OrderService {
+public interface KkOrderService {
 
     void placeOrder(KkOrder order);
 

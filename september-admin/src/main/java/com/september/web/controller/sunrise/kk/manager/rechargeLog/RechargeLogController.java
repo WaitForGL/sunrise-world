@@ -6,7 +6,7 @@ import com.september.common.core.domain.AjaxResult;
 import com.september.web.controller.common.domain.PageResult;
 import com.september.sunrise.kk.domain.KkRechargeLog;
 import com.september.sunrise.kk.dto.RechargeLogQueryDto;
-import com.september.sunrise.kk.service.RechargeLogService;
+import com.september.sunrise.kk.service.KkRechargeLogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class RechargeLogController {
 
-    private final RechargeLogService rechargeLogService;
+    private final KkRechargeLogService rechargeLogService;
 
     @GetMapping("/list")
     @ApiOperation("分页查询充值流水")

@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.september.common.core.domain.AjaxResult;
 import com.september.sunrise.kk.domain.KkUser;
 import com.september.sunrise.kk.dto.CustomerQueryDto;
-import com.september.sunrise.kk.service.CustomerService;
+import com.september.sunrise.kk.service.KkCustomerService;
 import com.september.web.controller.common.domain.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,7 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    private final CustomerService customerService;
+    private final KkCustomerService customerService;
 
     /**
      * 获取顾客列表（分页 + 条件筛选）

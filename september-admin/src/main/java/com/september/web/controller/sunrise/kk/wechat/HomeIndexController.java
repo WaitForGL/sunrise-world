@@ -1,7 +1,7 @@
 package com.september.web.controller.sunrise.kk.wechat;
 
 import com.september.common.core.domain.AjaxResult;
-import com.september.sunrise.kk.service.HomeIndexService;
+import com.september.sunrise.kk.service.KkHomeIndexService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class HomeIndexController {
 
-    private final HomeIndexService homeIndexService;
+    private final KkHomeIndexService homeIndexService;
 
     @GetMapping("/index")
     @ApiOperation("获取首页展示数据")

@@ -5,7 +5,7 @@ import com.september.sunrise.kk.dto.ManagerQueryDto;
 
 import java.util.List;
 
-public interface ManagerService {
+public interface KkManagerService {
 
     List<KkUser> getManagerList(ManagerQueryDto queryDto);
 

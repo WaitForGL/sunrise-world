@@ -5,7 +5,7 @@ import com.september.sunrise.kk.dto.CustomerQueryDto;
 
 import java.util.List;
 
-public interface CustomerService {
+public interface KkCustomerService {
 
     /**
      * 获取顾客列表（分页 + 条件筛选）

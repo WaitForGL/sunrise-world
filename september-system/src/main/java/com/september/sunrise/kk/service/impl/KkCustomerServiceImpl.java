@@ -4,14 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.september.sunrise.kk.domain.KkUser;
 import com.september.sunrise.kk.dto.CustomerQueryDto;
 import com.september.sunrise.kk.mapper.KkUserMapper;
-import com.september.sunrise.kk.service.CustomerService;
+import com.september.sunrise.kk.service.KkCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class KkCustomerServiceImpl implements KkCustomerService {
 
     @Autowired
     private KkUserMapper kkUserMapper;
